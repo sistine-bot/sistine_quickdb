@@ -1,0 +1,13 @@
+[
+  "O lutador **1** deu um soco de **15** de dano no lutador **2**\n\nO Lutador **2** ficou com: **85** de vida.",
+  "O lutador **2** deu um soco de **15** de dano no lutador **1**\n\nO Lutador **1** ficou com: **85** de vida.",
+  
+  "O lutador **1** conseguiu dar um critico no lutador **2** e deu **35** de dano\n\nO lutador **2** ficou com: **65** de vida.",
+  "O lutador **2** conseguiu dar um critico no lutador **1** e deu **35** de dano\n\nO lutador **1** ficou com: **65** de vida.",
+  
+  "O lutador **1** deu um super combo no lutador **2** e deu **100** de dano\n\nO lutador **2** ficou com **0** de vida.",
+  "O lutador **2** deu um super combo no lutador **1** e deu **100** de dano\n\nO lutador **1** ficou com **0** de vida.",
+  
+  "O lutador **1** deu uma rasteira no lutador **2** e deu **25** de dano\n\nO lutador **2** ficou com **75** de vida.",
+  "O lutador **2** deu uma rasteira no lutador **1** e deu **25** de dano\n\nO lutador **1** ficou com **75** de vida."
+]
