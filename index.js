@@ -20,51 +20,13 @@ fs.readdir("./comandos/", (err, files) => {
     });
   });
 });
-fs.readdir("./comandos/jogos/", (err, files) => {
-  if (err) console.error(err);
 
-  let arquivojs = files.filter(f => f.split(".").pop() == "js");
-  arquivojs.forEach((f, i) => {
-    let props = require(`./comandos/jogos/${f}`);
-    console.log(`[ ${f} ] - Comando iniciado ✅`);
-    doky.commands.set(props.help.name, props);
-    props.help.aliases.forEach(alias => {
-      doky.aliases.set(alias, props.help.name);
-    });
-  });
-});
 fs.readdir("./comandos/diversão/", (err, files) => {
   if (err) console.error(err);
 
   let arquivojs = files.filter(f => f.split(".").pop() == "js");
   arquivojs.forEach((f, i) => {
     let props = require(`./comandos/diversão/${f}`);
-    console.log(`[ ${f} ] - Comando iniciado ✅`);
-    doky.commands.set(props.help.name, props);
-    props.help.aliases.forEach(alias => {
-      doky.aliases.set(alias, props.help.name);
-    });
-  });
-});
-fs.readdir("./comandos/minecraft/", (err, files) => {
-  if (err) console.error(err);
-
-  let arquivojs = files.filter(f => f.split(".").pop() == "js");
-  arquivojs.forEach((f, i) => {
-    let props = require(`./comandos/minecraft/${f}`);
-    console.log(`[ ${f} ] - Comando iniciado ✅`);
-    doky.commands.set(props.help.name, props);
-    props.help.aliases.forEach(alias => {
-      doky.aliases.set(alias, props.help.name);
-    });
-  });
-});
-fs.readdir("./comandos/moderacão/", (err, files) => {
-  if (err) console.error(err);
-
-  let arquivojs = files.filter(f => f.split(".").pop() == "js");
-  arquivojs.forEach((f, i) => {
-    let props = require(`./comandos/moderacão/${f}`);
     console.log(`[ ${f} ] - Comando iniciado ✅`);
     doky.commands.set(props.help.name, props);
     props.help.aliases.forEach(alias => {
@@ -85,12 +47,12 @@ fs.readdir("./comandos/info/", (err, files) => {
     });
   });
 });
-fs.readdir("./comandos/uteis/", (err, files) => {
+fs.readdir("./comandos/jogos/", (err, files) => {
   if (err) console.error(err);
 
   let arquivojs = files.filter(f => f.split(".").pop() == "js");
   arquivojs.forEach((f, i) => {
-    let props = require(`./comandos/uteis/${f}`);
+    let props = require(`./comandos/jogos/${f}`);
     console.log(`[ ${f} ] - Comando iniciado ✅`);
     doky.commands.set(props.help.name, props);
     props.help.aliases.forEach(alias => {
@@ -98,6 +60,33 @@ fs.readdir("./comandos/uteis/", (err, files) => {
     });
   });
 });
+fs.readdir("./comandos/minecraft/", (err, files) => {
+  if (err) console.error(err);
+
+  let arquivojs = files.filter(f => f.split(".").pop() == "js");
+  arquivojs.forEach((f, i) => {
+    let props = require(`./comandos/minecraft/${f}`);
+    console.log(`[ ${f} ] - Comando iniciado ✅`);
+    doky.commands.set(props.help.name, props);
+    props.help.aliases.forEach(alias => {
+      doky.aliases.set(alias, props.help.name);
+    });
+  });
+});
+fs.readdir("./comandos/moderação/", (err, files) => {
+  if (err) console.error(err);
+
+  let arquivojs = files.filter(f => f.split(".").pop() == "js");
+  arquivojs.forEach((f, i) => {
+    let props = require(`./comandos/moderação/${f}`);
+    console.log(`[ ${f} ] - Comando iniciado ✅`);
+    doky.commands.set(props.help.name, props);
+    props.help.aliases.forEach(alias => {
+      doky.aliases.set(alias, props.help.name);
+    });
+  });
+});
+
 fs.readdir("./comandos/owner/", (err, files) => {
   if (err) console.error(err);
 
@@ -124,6 +113,21 @@ fs.readdir("./comandos/registro/", (err, files) => {
     });
   });
 });
+fs.readdir("./comandos/uteis/", (err, files) => {
+  if (err) console.error(err);
+
+  let arquivojs = files.filter(f => f.split(".").pop() == "js");
+  arquivojs.forEach((f, i) => {
+    let props = require(`./comandos/uteis/${f}`);
+    console.log(`[ ${f} ] - Comando iniciado ✅`);
+    doky.commands.set(props.help.name, props);
+    props.help.aliases.forEach(alias => {
+      doky.aliases.set(alias, props.help.name);
+    });
+  });
+});
+
+
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
   files.forEach(file => {

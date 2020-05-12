@@ -182,7 +182,8 @@ msg.edit(embed)
 \`${config.prefix}removerole [@usuario @cargo]\` » Remova um cargo de um usuario | rr, rrole, roleremove
 \`${config.prefix}rename [novo nome]\` » Me de um novo nome | renomear
 \`${config.prefix}say [mensagem]\` » Fale como o bot | falar
-\`${config.prefix}setleave [id]\` » Defina um canal para poder enviar a mensagem quando usuario sai | leaveset
+\`${config.prefix}setleave [id]\` » Defina um canal para poder enviar a mensagem quando usuario sair | leaveset
+\`${config.prefix}setleaveoff\` » Resete o canal onde será enviada a mensagem de quando sair um utusario | leavesetoff
 \`${config.prefix}setwelcome [id]\` » Defina um canal onde será enviado a mensagem de welcome | welcomeset
 \`${config.prefix}slowmode [1d/s/m/h]\` » Coloque modo lento em algum canal | modolento
 \`${config.prefix}tempmute [@usuario 1[h/s/d/m] ]\` » De tempmute em algúm usuario | mute

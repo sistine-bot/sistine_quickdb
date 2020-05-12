@@ -143,10 +143,8 @@ exports.run = async (doky, message, args) => { // setando a base
           .setTitle("**Homem**")
           .setDescription(`
 **Seja bem vindo ao meu menu de registro**
-
 Para definir um cargo para **Homem** 
 Utilize **${config.prefix}cargohomem @cargo**
-
 ${onhomem} **|** **Cargo:** <@&${rolehomem}>
 `)
           //.setThumbnail('')
@@ -161,10 +159,8 @@ ${onhomem} **|** **Cargo:** <@&${rolehomem}>
                 .setTitle("**Mulher**")
                 .setDescription(`
 **Seja bem vindo ao meu menu de registro**
-
 Para definir um cargo para **mulher** 
 utilize ${config.prefix}cargomulher @cargo
-
 ${onmulher} **| Cargo:** <@&${rolemulher}>
 `)
           .setFooter(`Para obter qualquer outra informação ${config.prefix}ajuda`)
@@ -176,10 +172,8 @@ ${onmulher} **| Cargo:** <@&${rolemulher}>
                 .setTitle("**Outro**")
                 .setDescription(`
 **Seja bem vindo ao meu menu de registro**
-
 Para definir um cargo para **Outro** 
 Utilize **${config.prefix}cargooutro @cargo**
-
 ${onoutro} **| Cargo: <@&${roleoutro}>**
 `)
                 .setFooter(`Para obter qualquer outra informação ${config.prefix}ajuda`)
@@ -193,10 +187,8 @@ ${onoutro} **| Cargo: <@&${roleoutro}>**
                 .setTitle("**+18**")
                 .setDescription(`
 **Seja bem vindo ao meu menu de registro**
-
 Para definir um cargo para **+18** 
 Utilize **${config.prefix}cargomais18 @cargo**
-
 ${onm18} **| Cargo:** <@&${rolem18}>
 `)
                 .setFooter(`Para obter qualquer outra informação ${config.prefix}ajuda`)
@@ -210,10 +202,8 @@ ${onm18} **| Cargo:** <@&${rolem18}>
                 .setTitle("**-18**")
                 .setDescription(`
 **Seja bem vindo ao meu menu de registro**
-
 Para definir um cargo para **-18** 
 Utilize **${config.prefix}cargomenos18 @cargo**
-
 ${onn18} **| Cargo:** <@&${rolen18}>
 `)
                 .setFooter(`Para obter qualquer outra informação ${config.prefix}ajuda`)
@@ -227,10 +217,8 @@ ${onn18} **| Cargo:** <@&${rolen18}>
                 .setTitle("**Não Registrado**")
                 .setDescription(`
 **Seja bem vindo ao meu menu de registro**
-
 Para definir um cargo para **Não Registrado** 
 Utilize **${config.prefix}cargonaoregistrado @cargo**
-
 ${onnregister} **| Cargo:** <@&${rolenregister}>
 `)
                 .setFooter(`Para obter qualquer outra informação ${config.prefix}ajuda`)
@@ -244,10 +232,8 @@ ${onnregister} **| Cargo:** <@&${rolenregister}>
                 .setTitle("**Registrado**")
                 .setDescription(`
 **Seja bem vindo ao meu menu de registro**
-
 Para definir um cargo para **Registrado** 
 Utilize **${config.prefix}cargoregistrado @cargo**
-
 ${onregister} **|** **Cargo:** <@&${roleregister}>
 `)
                 .setFooter(`Para obter qualquer outra informação ${config.prefix}ajuda`)

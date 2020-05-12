@@ -12,7 +12,6 @@ exports.run = async (doky, message, args) => {
   
   const embed = new Discord.MessageEmbed() // Criando uma embed
   .setDescription(`
-
 `)
   .setColor('#03fc7b')
   message.channel.send({embed}).then(msg => { // definindo a função 'then' como 'msg'
@@ -37,21 +36,13 @@ msg.react('701544373204025454').then(() => msg.react('701544339167379517')).then
           const embed1 = new Discord.MessageEmbed()
           .setDescription(`
 **Cores**
-
 <:pinksquareemoji:703003202257158174> rosa » 25000 StarCoins
-
 <:blacklargesquareemoji:702312684493733988> preto » 25000 StarCoins
-
 <:yellowsquareemoji:702312681897721887> amarelo » 25000 StarCoins
-
 <:greensquareemoji:702312683965513809> verde » 25000 StarCoins
-
 <:redsquareemoji:702312682732126248> vermelho » 25000 StarCoins
-
 <:laranjaemoji:706343481219481600> laranja » 25000 StarCoins
-
 <:azulemoji:706343481064292384> azul » 25000 StarCoins
-
 <:roxoemoji:706343481274269746> roxo » 25000 StarCoins
 `)
           .setColor('#03fc7b')
@@ -244,7 +235,6 @@ msg.react('701544373204025454').then(() => msg.react('701544339167379517')).then
          
 const embed2 =new Discord.MessageEmbed() // Criando uma embed
   .setDescription(`**Loja VIP**
-
 <:vip:705633245701734490> VIP » 500.000 StarCoins
 `)
   .setThumbnail(`https://cdn.discordapp.com/emojis/701857109897379950.png?v=1`)
@@ -534,13 +524,9 @@ const embed2 =new Discord.MessageEmbed() // Criando uma embed
         const embed5 = new Discord.MessageEmbed()
           .setDescription(`
 **Loja utilitarios**
-
 **Itens**
-
 <:dokybullet:709240730857504848> - Cartucho 30 Balas » 15000
-
 **Armas**
-
 <:dokyglock:709240722150129715> - Revolver 38 » 30000
 <:dokyshutgun:709240722057986109> - Shotgun » 45000
 <:w_ak47braba:709238799745417278> - Fuzil AK-47 » 50000
@@ -641,4 +627,4 @@ const embed2 =new Discord.MessageEmbed() // Criando uma embed
 exports.help = {
   name: 'loja',
   aliases: ["loja-info", "info-loja"]
-} 
+}

@@ -58,9 +58,6 @@ exports.run = (doky, message, args) => {
         
         } 
       })
-      .catch(collected => { // Lembra da 'then' collected? Pois é! Caso o usuário não clique em 30s, iremos declarar como cancelado
-        msg.reply('<:dokyerro:700492899833479249> » O tempo acabou.');
-      });
   })
 
     } catch (err) {
@@ -94,9 +91,6 @@ exports.run = (doky, message, args) => {
         
         } 
       })
-      .catch(collected => { // Lembra da 'then' collected? Pois é! Caso o usuário não clique em 30s, iremos declarar como cancelado
-        message.reply('<:dokyerro:700492899833479249> » O tempo acabou.');
-      });
   })
 }
 }
