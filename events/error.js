@@ -1,3 +1,3 @@
-module.exports = async (doky, err) => {
+module.exports = async (client, err) => {
     console.log(err.message)
 };

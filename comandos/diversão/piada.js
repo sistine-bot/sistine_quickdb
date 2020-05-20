@@ -23,12 +23,12 @@ const lennys = [
 ]
   
 
-module.exports.run = async (doky, message, args) => {
+module.exports.run = async (client, message, args) => {
     var rand_num = Math.floor(Math.random() * lennys.length);
     var rand_val = lennys[rand_num];
 const embed = new MessageEmbed()
 .setDescription(`${rand_val}`)
-.setColor(`2f3136`)
+.setColor(`4287f5`)
     return message.channel.send(embed);
 }
 

@@ -3,21 +3,21 @@ const moment = require("moment"); // puxando o NPM moment (instale utilizando: n
 moment.locale('pt-BR') // definindo o local do moment, no nosso caso, pt-BR
 const config = require('../../config.json')
 
-exports.run = (doky, message, args) => { // setando a base
+exports.run = (client, message, args) => { // setando a base
 
   const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
   
   if (args.length < 1) {
             return message.channel.send(new Discord.MessageEmbed()
-                .setTitle("**<:dokyerro:700492899833479249> » Uso incorreto do comando**")
-                .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${config.prefix}${this.help.name} :emoji:` + "``")
+                .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} :emoji:` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`nenhum\``, false)
-                .setColor('2f3136'));
-        }
+                .setColor('4287f5'));
+  }
 
     if (args[0].charCodeAt(0) >= 55296) {
-        message.channel.send(`<:dokyerro:700492899833479249> » Não consegui aumentar esse emoji.`)
+        message.channel.send(`<:gierro:710197544751202414> » Não consegui aumentar esse emoji.`)
         
     }
 
@@ -25,29 +25,29 @@ exports.run = (doky, message, args) => { // setando a base
   const match = args[0].match(/<:[a-zA-Z0-9_-]+:(\d{18})>/);
   
   if (!match || !match[1]) {
-        message.channel.send(`<:dokyerro:700492899833479249> » Por favor, insira um emoji valido.`)
+        message.channel.send(`<:gierro:710197544751202414> » Por favor, insira um emoji valido.`)
         
     }
   
-  const emoji = doky.emojis.cache.get(match[1]) ;
+  const emoji = client.emojis.cache.get(match[1]) ;
   
   
   if (!emoji) {
-        message.channel.send(`<:dokyerro:700492899833479249> » Não encontrei esse emoji!`)
+        message.channel.send(`<<:gierro:710197544751202414> » Não encontrei esse emoji!`)
         
     }
   
     let embed = new Discord.MessageEmbed()
     .setAuthor(`Informações`, emoji.url)
-    .setColor("#2f3136")
+    .setColor("#4287f5")
     .setThumbnail(emoji.url)
-    .addField(`**<:dokytag:701202353474371585>•Nome:**`, `${emoji.name}`, true)
-    .addField(`**<:dokyprofile:700516353831993385>•Servidor:**`, `${emoji.guild}`, true)
-    .addField(`**<:dokyimage:707421295394029568>•Emoji Animado:**`, `${emoji.animated ? '<:dokycerto:700492893651075112>  Sim' : '<:dokyerro:700492899833479249> Não'}`, true)
-    .addField(`**<:dokyid:701200223422119966>•Id:**`, `\`${emoji.id}\``, true)
+    .addField(`**<:gitag:710185903024504963>•Nome:**`, `${emoji.name}`, true)
+    .addField(`**<:giprofile:710193333732900945>•Servidor:**`, `${emoji.guild}`, true)
+    .addField(`**<:giimage:710211829271625788>•Emoji Animado:**`, `${emoji.animated ? '<:gicerto:710198069068562473> Sim' : '<:gierro:710197544751202414> Não'}`, true)
+    .addField(`**<:giid:710190138826948668>•Id:**`, `\`${emoji.id}\``, true)
 
-    .addField(`**<:dokyarroba:707361585588600872>•Menção**`, `\`<:${emoji.name}:${emoji.id}>\``, false)
-    .addField(`**<:dokylink:707363581448159322>•Link:**`, `[Link aqui](${emoji.url})`, false)
+    .addField(`**<:giarroba:707361585588600872>•Menção**`, `\`<:${emoji.name}:${emoji.id}>\``, false)
+    .addField(`**<:gilink:710212087900536954>•Link:**`, `[Link aqui](${emoji.url})`, false)
     
     message.channel.send({embed})
 }

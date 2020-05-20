@@ -1,7 +1,7 @@
 const Discord = require("discord.js"); // puxando a livraria 'discord.js'
 const config = require('../../config.json')
 
-exports.run = (doky, message, args) => {
+exports.run = (client, message, args) => {
   
   if (message.author.id !== '675439542110650399') return message.channel.send('<:dokyerro:700492899833479249> » Você não pode utilizar este comando, Apenas pessoas especiais.');
   
@@ -13,7 +13,7 @@ exports.run = (doky, message, args) => {
                 .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${config.prefix}${this.help.name} mensagem` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`owner\``, false)
-                .setColor('2f3136'));
+                .setColor('4287f5'));
         }
   message.channel.send(text)
 };

@@ -1,19 +1,19 @@
 const Discord = require('discord.js');
 
-exports.run = (doky, message, args) => {
+exports.run = (client, message, args) => {
   
-  var sugestao = args.slice(0).join(' ');
-  if (!sugestao) message.reply(`<:dokyatencao:700517263224340601> » Você precisa escrever algo`)
+  //var sugestao = args.slice(0).join(' ');
+  if (!args[0]) message.channel.send(`<:giatencao:710196761704267807> » Você precisa escrever algo`)
   
       let embed = new Discord.MessageEmbed()
 
         .setTitle(`Bug`)
-        .setDescription(`:bust_in_silhouette: **Autor:** ${message.author}\n\n🐛 **Bug:**`+'```'+` ${sugestao}`+'```')
-        .setColor('RANDOM')
+        .setDescription(`:bust_in_silhouette: **Autor:** ${message.author}\n\n🐛 **Bug:**`+'```'+` ${args[0]}`+'```')
+        .setColor('4287f5')
         
-        doky.channels.cache.get('699474891983945788').send(embed)
+        client.channels.cache.get('699474891983945788').send(embed)
 
-  message.reply(`Seu bug foi enviado ao canal de bugs - 🐛`)
+  message.channel.send(`Seu bug foi enviado ao canal de bugs - 🐛`)
 }
 
 exports.help = {

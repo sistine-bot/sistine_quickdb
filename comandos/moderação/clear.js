@@ -1,29 +1,29 @@
 const Discord = require('discord.js'); // puxando a livraria 'discord.js'
 const config = require('../../config.json')
 
-exports.run = (doky, message, args) => { // setando as bases 
+exports.run = (client, message, args) => { // setando as bases 
   
-    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply(`<:dokyerro:700492899833479249> » você precisa da permissão de: \`MANAGE_MESSAGES\` para utilizar este comando.`); // caso o autor não possua a permissão 'GERENCIAR_MENSAGENS', vamos avisar para ele
+    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply(`<:gierro:710197544751202414> » você precisa da permissão de: \`MANAGE_MESSAGES\` para utilizar este comando.`); // caso o autor não possua a permissão 'GERENCIAR_MENSAGENS', vamos avisar para ele
     let clean = args.slice(0).join(' '); // puxando uma quantidade de numero, partindo dos argumentos zero
  
 
   if (clean < 2 || clean > 100) {
             return message.channel.send(new Discord.MessageEmbed()
-                .setTitle("**<:dokyerro:700492899833479249> » Uso incorreto do comando**")
-                .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${config.prefix}${this.help.name} 2 a 100` + "``")
+                .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} 2 a 100` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`Gerenciar Mensagens\``, false)
-                .setColor('2f3136'));
+                .setColor('#4287f5'));
         }
     
     // caso o membro não escreva um numero
-    if (args.length === 0) return message.reply(`<:dokyerro:700492899833479249> » escreva um número de: \`2 à 100\`!`) 
+    if (args.length === 0) return message.reply(`<:gierro:710197544751202414> » escreva um número de: \`2 à 100\`!`) 
     try { // utilizando a function 'try', traduzindo: tentar
         message.channel.bulkDelete(clean) // tentaremos deletar a quantia que o membro pediu
         // enviando uma embed
         let embed = new Discord.MessageEmbed()
 
-        .setTitle(`**<:dokytrash:700516278426664973> » Clear**`)
+        .setTitle(`**<:giclear:710207069420126260> » Clear**`)
         .setDescription(`Limpei um total de \`${clean}\` mensagens.`)
         .setColor('#000000')
         .setFooter(`Moderador: ${message.author.username}`)

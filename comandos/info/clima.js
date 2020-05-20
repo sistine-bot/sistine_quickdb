@@ -2,15 +2,15 @@ const Discord = require('discord.js'); // puxando a livraria 'discord.js'
 const weather = require('weather-js'); // puxando o NPM 'weather-js' (instale utilizando: npm i weather-js)
 const config = require('../../config.json')
 
-exports.run = (doky, message, args) => { // setando a base
+exports.run = (client, message, args) => { // setando a base
   if (!args[0]) {
             return message.channel.send(new Discord.MessageEmbed()
-                .setTitle("**<:dokyerro:700492899833479249> » Uso incorreto do comando**")
-                .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${config.prefix}${this.help.name} RJ` + "``")
+                .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} RJ` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`nenhum\``, false)
-                .setColor('2f3136'));
-        }
+                .setColor('4287f5'));
+  }
 
   
   weather.find({ // puxando os detalhes do npm
@@ -22,7 +22,7 @@ exports.run = (doky, message, args) => { // setando a base
         var txt = args.slice(0).join(' ');
       
         // caso o bot não encontre a cidade
-        if (!txt) return message.reply(`<:dokyerro:700492899833479249> » desculpe, mas não encontrei essa cidade!`)
+        if (!txt) return message.reply(`<:gierro:710197544751202414> » desculpe, mas não encontrei essa cidade!`)
         let embed = new Discord.MessageEmbed()
             .setDescription(`
 **${result[0].location.name}**\n
@@ -30,7 +30,7 @@ exports.run = (doky, message, args) => { // setando a base
 **🌡️ Sensação Térmica** ${result[0].current.feelslike}°C\n
 **💦 Umidade** ${result[0].current.humidity}%\n
 **💨 Vento** ${result[0].current.windspeed}`)
-            .setColor('#2f3136')
+            .setColor('#4287f5')
             .setImage(result[0].current.imageUrl)
 
         message.channel.send(embed)

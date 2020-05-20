@@ -2,14 +2,14 @@ const Discord = require('discord.js'); // puxando a livraria 'discord.js'
 const moment = require('moment'); // puxando o NPM 'moment' (instale utilizando: npm i moment)
 moment.locale('pt-BR') // definindo o moment para BR
 
-exports.run = (doky, message, args) => { // puxando a base
+exports.run = (client, message, args) => { // puxando a base
 
     // sistema para identificar a quanto tempo o bot esta online!
     let dias = 0; 
     let week = 0; 
  
      let uptime = ``; 
-     let totalSegundos = (doky.uptime / 1000); 
+     let totalSegundos = (client.uptime / 1000); 
      let horas = Math.floor(totalSegundos / 3600); 
      totalSegundos %= 3600; 
      let minutos = Math.floor(totalSegundos / 60); 
@@ -43,18 +43,17 @@ const cpuStat = require("cpu-stat");
                 return console.log(err);
               }
     
-    // criando umas variaveis que podem ser clicadas e redirecionadas a um site
-    var host = ('[Glitch](https://glitch.com/)')    
+    let host = ('[Glitch](https://glitch.com/)')    
     
-    let embed = new Discord.MessageEmbed()
-    .setColor("#2f3136")
-    .addField(`**<:dokyhost:700840732621275176>•Host**`, `${host}`, true)
-    .addField(`**<:dokyplataforma:700891669800812544>•Plataforma**`, `\`${os.platform}\``,true)
-    .addField(`**<:dokydata:700515916043255818>•Arquitetura** `, `\`${os.arch()}\``, true)
-    .addField(`**<:dokyfolders:700837668749049936>•Biblioteca**`, `\`Discord.js(v12.x)\``, true)
-    .addField(`**<:dokycpuu:700902668406751334>•Consumo de CPU**`, `\`${percent.toFixed(2)}%\``, true)
-    .addField(`**<:dokymemory:706725380219863061>•Consumo de Memoria**`, `\`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${(os.totalmem() / 1024 / 1024).toFixed(2)}MB\``, true)
-    .addField(`<:dokycpu:700894330440777830>•CPU`, `\`\`\`${os.cpus().map(i => `${i.model}`)[0]}\`\`\``, false)
+    const embed = new Discord.MessageEmbed()
+    .setColor("#4287f5")
+    .addField(`**<:gihost:710191013196726289>•Host**`, `${host}`, true)
+    .addField(`**<:gilinux:710189271247487126>•Plataforma**`, `\`${os.platform}\``,true)
+    .addField(`**<:gidata:710188710326567085>•Arquitetura** `, `\`${os.arch()}\``, true)
+    .addField(`**<:gifolders:710194436591714344>•Biblioteca**`, `\`Discord.js(v12.x)\``, true)
+    .addField(`**<:gicpu:710188248131174440>•Consumo de CPU**`, `\`${percent.toFixed(2)}%\``, true)
+    .addField(`**<:gimemory:710213326180974614>•Consumo de Memoria**`, `\`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${(os.totalmem() / 1024 / 1024).toFixed(2)}MB\``, true)
+    .addField(`<:gicpu:710188248131174440>•CPU`, `\`\`\`${os.cpus().map(i => `${i.model}`)[0]}\`\`\``, false)
     message.channel.send(embed)
   })
 }

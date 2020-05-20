@@ -1,15 +1,14 @@
 const Discord = require("discord.js"); // puxando a livraria 'discord.js'
 
-exports.run = (doky, message, args) => { // setando a base
+exports.run = (client, message, args) => { // setando a base
 
 
-    let embed = new Discord.MessageEmbed()
-
+    const embed = new Discord.MessageEmbed()
     .setColor('AQUA')
     .setTitle(`${message.guild.name}`, message.guild.iconURL({ format: 'png', dynamic: true, size: 1024 }))
     .setDescription("**[📥 clique aqui para baixar a imagem](" + message.guild.iconURL() + ")**")
     .setImage(message.guild.iconURL({ format: 'png', dynamic: true, size: 1024 }))
-    .setColor('#36393e')
+    .setColor('#4287f5')
     message.channel.send(embed)
 }
 

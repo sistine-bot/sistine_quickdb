@@ -3,21 +3,21 @@ const superagent = require("superagent"); //exporta a npm superagent
 const config = require('../../config.json')
 
 //exporta o comando para o index
-exports.run = async (doky, message, args) => {
+exports.run = async (client, message, args) => {
   
     let member = message.guild.members.cache.get(args[0]) || message.mentions.members.first();
     //Se não mencionar um usuario ele ira responder isto
     if (!member) {
             return message.channel.send(new Discord.MessageEmbed()
-                .setTitle("**<:dokyerro:700492899833479249> » Uso incorreto do comando**")
-                .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${config.prefix}${this.help.name} @usuario` + "``")
+                .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} @usuario` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`nenhuma\``, false)
-                .setColor('2f3136'));
+                .setColor('4287f5'));
         }
   
     //se o usuario se mencionar ele irá responder isto
-    if (member.id == message.author.id) return message.reply("<:dokyerro:700492899833479249> » você não pode dar um abraço em si mesmo.")
+    if (member.id == message.author.id) return message.reply("<:gierro:710197544751202414> » você não pode dar um abraço em si mesmo.")
     
     const {
         body

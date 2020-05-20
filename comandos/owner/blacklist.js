@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const fs = require('fs');
 const config = require('../../config.json')
 
-exports.run = async (doky, message, args) => {
+exports.run = async (client, message, args) => {
     //message.delete();
     let blacklist = JSON.parse(fs.readFileSync("./storages/blacklist.json", "utf8"));
     let user = args[0];
@@ -14,7 +14,7 @@ exports.run = async (doky, message, args) => {
                 .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${config.prefix}${this.help.name} @usuario @motivo` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`Doky Dono\``, false)
-                .setColor('2f3136'));
+                .setColor('4287f5'));
         }
   
     if (!message.author.id === '675439542110650399') return message.reply("Você não tem pemisão para utilizar este comando, apenas pessoas especiais.");
@@ -33,7 +33,7 @@ exports.run = async (doky, message, args) => {
             if(err) throw err;
           });
         
-        doky.guilds.forEach((guild) => {
+        client.guilds.forEach((guild) => {
         if(guild.ownerID === user) {
           message.guild.leave(guild.id)
         }

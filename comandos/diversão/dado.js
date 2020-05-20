@@ -1,9 +1,9 @@
 const Discord = require('discord.js'); // puxando a livraria 'discord.js'
 
-exports.run = (doky, message, args) => { // setando a base
+exports.run = (client, message, args) => { // setando a base
 
     // puxando um chao, com sistema randomico (de 6 a 1)
-    var numero = Math.floor(Math.random() * 6) + 1;
+    let numero = Math.floor(Math.random() * 6) + 1;
 
     message.channel.send(`🎲 » Você jogou o dado e..\nEle caiu em: ${numero}`)
 }

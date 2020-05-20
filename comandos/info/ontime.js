@@ -1,12 +1,12 @@
 const Discord = require('discord.js'); // puxando a livraria 'dicord.js'
 
-exports.run = (doky, message, args) => { // setando a base
+exports.run = (client, message, args) => { // setando a base
 
 let dias = 0; // variavel para definir dias
 let week = 0;  // variavel para definir semanas
  
  let uptime = ``; // dentro dessa variavel, ficará armazenado todas as informações que criaremos abaixo 
- let totalSegundos = (doky.uptime / 1000); // definindo o maximo de segundos, no caso 1000s
+ let totalSegundos = (client.uptime / 1000); // definindo o maximo de segundos, no caso 1000s
  let horas = Math.floor(totalSegundos / 3600); // definindo o maximo de horas, no caso 3600s
  totalSegundos %= 3600; // fazendo uma conta basica, dos segundos
  let minutos = Math.floor(totalSegundos / 60); // um minuto e 60s
@@ -32,7 +32,7 @@ let week = 0;  // variavel para definir semanas
 
  uptime += `\`${horas}h ${minutos}m ${segundos}s\``; // a finalização daquele espaco do comeco
 
- message.channel.send(`<:dokytime:700492899141550160> » Eu estou acordado há: ${uptime}`)
+ message.channel.send(`<:girelogio:710206714288406538> » Eu estou acordado há: ${uptime}`)
 
 }
 

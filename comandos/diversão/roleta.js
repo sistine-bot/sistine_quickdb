@@ -1,6 +1,6 @@
 const Discord = require("discord.js"); // puxando a livraria 'discord.js'
 
-exports.run = (doky, message, args) => { // setando a base
+exports.run = (client, message, args) => { // setando a base
 
     var random = Math.floor(Math.random() * (5 - 2) + 2); // criando um sistema random, fazendo uma continha basica
     if (random === 3){

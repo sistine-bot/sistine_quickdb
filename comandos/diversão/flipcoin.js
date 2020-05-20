@@ -5,7 +5,7 @@ var cc = [
     "Coroa <:dokycoroa:700754732364595322> "
 ];
 
-exports.run = async (doky, message, args) => {
+exports.run = async (client, message, args) => {
 
   message.channel.send(message.author.toString() + " Você flipou a moeda e caiu: " + (cc[Math.floor(Math.random() * cc.length)]));
 }

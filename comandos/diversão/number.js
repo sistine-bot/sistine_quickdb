@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const config = require('../../config.json')
 
-exports.run = async (doky, message, args) => {
+exports.run = async (client, message, args) => {
         let min = parseInt(args[0]);
         let max = parseInt(args[1]);
 
@@ -15,11 +15,11 @@ exports.run = async (doky, message, args) => {
   
         if (isNaN(Result)) {
             return message.channel.send(new Discord.MessageEmbed()
-                .setTitle("**<:dokyerro:700492899833479249> » Uso incorreto do comando**")
-                .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${config.prefix}${this.help.name} 1 4000` + "``")
+                .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} 1 4000` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`nenhum\``, false)
-                .setColor('2f3136'));
+                .setColor('4287f5'));
         }else{
             message.channel.send(Result);
         }

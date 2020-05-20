@@ -7,14 +7,14 @@ const fetch = require("node-fetch")
 exports.run = async (client, message, args) => {
     //checking args
    if (!args[0]) {
-     return message.channel.send("<:dokyerro:700492899833479249> » Por favor, indique o nome do anime que você deseja procurar!");
+     return message.channel.send("<:gierro:710197544751202414> » Por favor, indique o nome do anime que você deseja procurar!");
       
     }
     //main part
         var search = message.content.split(/\s+/g).slice(1).join(" ");
         kitsu.searchAnime(search).then(async result => {
             if (result.length === 0) {
-                return message.channel.send(`<:dokyerro:700492899833479249> » Nenhum resultado para esta pesquisa: ${search} ,Tente procurar um anime de verdade!`);
+                return message.channel.send(`<:gierro:710197544751202414> » Nenhum resultado para esta pesquisa: ${search} ,Tente procurar um anime de verdade!`);
             }
           
           var anime = result[0]
@@ -32,7 +32,7 @@ exports.run = async (client, message, args) => {
             return message.channel.send({ embed })
         }).catch(err => {
             console.log(err) //cathing error
-            return message.channel.send(`<:dokyerro:700492899833479249> » Nenhum resultado para esta pesquisa: ${search} ,Tente procurar um anime de verdade!`);
+            return message.channel.send(`<:gierro:710197544751202414> » Nenhum resultado para esta pesquisa: ${search} ,Tente procurar um anime de verdade!`);
         });
     }
 exports.help = {

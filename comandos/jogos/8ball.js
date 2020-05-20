@@ -2,16 +2,15 @@
 const Discord = require("discord.js"); //exporta a npm discord.js
 const config = require('../../config.json')
 
-//exporta o comando para a index
-exports.run = async (doky, message, args) => {
+exports.run = async (client, message, args) => {
   
     if (!args[0]) {
             return message.channel.send(new Discord.MessageEmbed()
-                .setTitle("**<:dokyerro:700492899833479249> » Uso incorreto do comando**")
-                .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${config.prefix}${this.help.name} pergunta` + "``")
+                .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} pergunta` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`nenhuma\``, false)
-                .setColor('2f3136'));
+                .setColor('4287f5'));
         }
   
   //lista das respostas que o bot ira responder
@@ -52,7 +51,7 @@ exports.run = async (doky, message, args) => {
     //titulo da embed
     .setTitle("🧙 Magic 8Ball!")
     //cor do embed
-    .setColor("#AA9900")
+    .setColor("#4287f5")
     //cria um field com que diz a pergunta
     .addField("Pergunta:", question)
     //cria um field que diz as respostas

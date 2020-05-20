@@ -82,9 +82,9 @@ const lennys = [
   ]
   
 
-module.exports.run = async (doky, message, args) => {
-    var rand_num = Math.floor(Math.random() * lennys.length);
-    var rand_val = lennys[rand_num];
+module.exports.run = async (client, message, args) => {
+    let rand_num = Math.floor(Math.random() * lennys.length);
+    let rand_val = lennys[rand_num];
 
     return message.channel.send(rand_val);
 }

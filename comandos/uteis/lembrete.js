@@ -1,9 +1,9 @@
 const Discord = require('discord.js')
 const config = require('../../config.json')
 
-exports.run = async (doky, message, args, level) => { // eslint-disable-line no-unused-vars
-	var time = args[0];
-	var reminder = args.splice(1).join(' ');
+exports.run = async (client, message, args, level) => { // eslint-disable-line no-unused-vars
+	let time = args[0];
+	let reminder = args.splice(1).join(' ');
   
   if (!time || !reminder) {
             return message.channel.send(new Discord.MessageEmbed()
@@ -11,7 +11,7 @@ exports.run = async (doky, message, args, level) => { // eslint-disable-line no-
                 .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${config.prefix}${this.help.name} 10[s/m/d/h] mensagem` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`nenhum\``, false)
-                .setColor('2f3136'));
+                .setColor('4287f5'));
         }
 
 	// This will not work if the bot is restarted or stopped

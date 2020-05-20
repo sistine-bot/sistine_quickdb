@@ -1,7 +1,7 @@
 const Discord = require('discord.js'); // puxando a livraria 'discord.js'
 const config = require('../../config.json')
 
-exports.run = async (doky, message, args) => { // setando as bases
+exports.run = async (client, message, args) => { // setando as bases
   
     if (!message.member.hasPermission('KICK_MEMBERS')) return message.reply("<:dokyerro:700492899833479249> » Você precisa da permissão de: `KICK_MEMBERS` para utilizar este comando") // caso o membro não possua a permissão 'EXPULSAR_MEMBROS', vamos botar o erro
 
@@ -9,12 +9,13 @@ exports.run = async (doky, message, args) => { // setando as bases
 
     if (!member) {
             return message.channel.send(new Discord.MessageEmbed()
-                .setTitle("**<:dokyerro:700492899833479249> » Uso incorreto do comando**")
-                .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${config.prefix}${this.help.name} @usuario @motivo` + "``")
+                .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} @usuario @motivo` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
-                .addField('**Permissões**', `\`Kickar membros\``, false)
-                .setColor('2f3136'));
+                .addField('**Permissões**', `\`Gerenciar Mensagens\``, false)
+                .setColor('#4287f5'));
         }
+  
     if (!member.bannable) return message.reply("<:dokyerro:700492899833479249> » não é possível punir este usuário.") // caso o membro tenha um cargo acima do seu bot, ele não vai expulsar
     let reason = args.slice(1).join(' ') // puxando um motivo
     if (!reason) reason = "Nenhuma razão fornecida" // caso nao haja, daremos com tal mensagem
@@ -27,7 +28,7 @@ exports.run = async (doky, message, args) => { // setando as bases
           .addField("Moderador:", message.author.tag)
           .addField("Motivo:", reason)
           .addField("Data:", message.createdAt.toLocaleString())
-          .setFooter(`Autor: ${message.author.tag}`, message.author.displayAvatarURL)
+          .setFooter(`Autor: ${message.author.tag}`, message.author.displayAvatarURL())
           .setColor("DARK_RED")
 
           message.channel.send(pEmbed)

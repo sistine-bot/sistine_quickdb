@@ -1,12 +1,12 @@
 const Discord = require('discord.js');
 
-let site = `[doky.website](https://doky.glitch.me)`
+let site = `[gizelle.website](https://gizelle.glitch.me)`
 
-exports.run = (doky, message, args) => {
+exports.run = (client, message, args) => {
 
         const embed = new Discord.MessageEmbed()
-            .addField(`<:dokycerto:700492893651075112> » Meu site oficial.`, site)
-            .setColor('2f3136')
+            .addField(`<:gicerto:710198069068562473> » Meu site oficial.`, site)
+            .setColor('4287f5')
         message.channel.send(embed)
 };
 

@@ -2,14 +2,14 @@ const Discord = require('discord.js');
 const db = require('quick.db');
 const config = require('../../config.json')
 
-exports.run = async (doky, message, args) => { // setando a base
+exports.run = async (client, message, args) => { // setando a base
   let member = message.mentions.users.first() || message.author; // caso ele n mencione, vai ser pra si mesmo
-  if (message.author.id !== '675439542110650399') return message.channel.send('<:dokyerro:700492899833479249> » Você não pode utilizar este comando, Apenas pessoas especiais.');
+  if (message.author.id !== '675439542110650399') return message.channel.send('<:gierro:710197544751202414> » Você não pode utilizar este comando, Apenas pessoas especiais.');
   //on/off
   let onoff = await db.get(`onoff_${message.guild.id}`)
-  if (onoff === null) onoff = `<:dokyoff:700517556020314192> Desativado`;
-  if (onoff === 0) onoff = `<:dokyoff:700517556020314192> Desativado`
-  if (onoff === 1) onoff = `<:dokyon:700517483286888490> Ativado`
+  if (onoff === null) onoff = `<:gioff:700517556020314192> Desativado`;
+  if (onoff === 0) onoff = `<:gioff:700517556020314192> Desativado`
+  if (onoff === 1) onoff = `<:gion:700517483286888490> Ativado`
   
   let rolehomem = await db.get(`homem_${message.guild.id}`)
   if (rolehomem === null) rolehomem = '`Nenhum cargo`'
@@ -44,46 +44,46 @@ exports.run = async (doky, message, args) => { // setando a base
   
   
   let onhomem = await db.get(`onhomem_${message.guild.id}`)
-  if (onhomem === null) onhomem = '<:dokyoff:700517556020314192>'
-  if (onhomem === 0) onhomem = '<:dokyoff:700517556020314192>'
-  if (onhomem === 1) onhomem = '<:dokyoff:700517556020314192>'
-  if (onhomem === 2) onhomem = '<:dokyon:700517483286888490>'
+  if (onhomem === null) onhomem = '<:gioff:700517556020314192>'
+  if (onhomem === 0) onhomem = '<:gioff:700517556020314192>'
+  if (onhomem === 1) onhomem = '<:gioff:700517556020314192>'
+  if (onhomem === 2) onhomem = '<:gion:700517483286888490>'
   
   let onmulher = await db.get(`onmulher_${message.guild.id}`)
-  if (onmulher === null) onmulher = '<:dokyoff:700517556020314192>'
-  if (onmulher === 0) onmulher = '<:dokyoff:700517556020314192>'
-  if (onmulher === 1) onmulher = '<:dokyoff:700517556020314192>'
-  if (onmulher === 2) onmulher = '<:dokyon:700517483286888490>'
+  if (onmulher === null) onmulher = '<:gioff:700517556020314192>'
+  if (onmulher === 0) onmulher = '<:gioff:700517556020314192>'
+  if (onmulher === 1) onmulher = '<:gioff:700517556020314192>'
+  if (onmulher === 2) onmulher = '<:gion:700517483286888490>'
   
   let onoutro = await db.get(`onoutro_${message.guild.id}`)
-  if (onoutro === null) onoutro = '<:dokyoff:700517556020314192>'
-  if (onoutro === 0) onoutro = '<:dokyoff:700517556020314192>'
-  if (onoutro === 1) onoutro = '<:dokyoff:700517556020314192>'
-  if (onoutro === 2) onoutro = '<:dokyon:700517483286888490>'
+  if (onoutro === null) onoutro = '<:gioff:700517556020314192>'
+  if (onoutro === 0) onoutro = '<:gioff:700517556020314192>'
+  if (onoutro === 1) onoutro = '<:gioff:700517556020314192>'
+  if (onoutro === 2) onoutro = '<:gion:700517483286888490>'
   
   let onm18 = await db.get(`onm18_${message.guild.id}`)
-  if (onm18 === null) onm18 = '<:dokyoff:700517556020314192>'
-  if (onm18 === 0) onm18 = '<:dokyoff:700517556020314192>'
-  if (onm18 === 1) onm18 = '<:dokyoff:700517556020314192>'
-  if (onm18 === 2) onm18 = '<:dokyon:700517483286888490>'
+  if (onm18 === null) onm18 = '<:gioff:700517556020314192>'
+  if (onm18 === 0) onm18 = '<:gioff:700517556020314192>'
+  if (onm18 === 1) onm18 = '<:dgioff:700517556020314192>'
+  if (onm18 === 2) onm18 = '<:gion:700517483286888490>'
   
   let onn18 = await db.get(`onn18_${message.guild.id}`)
-  if (onn18 === null) onn18 = '<:dokyoff:700517556020314192>'
-  if (onn18 === 0) onn18 = '<:dokyoff:700517556020314192>'
-  if (onn18 === 1) onn18 = '<:dokyoff:700517556020314192>'
-  if (onn18 === 2) onn18 = '<:dokyon:700517483286888490>'
+  if (onn18 === null) onn18 = '<:gioff:700517556020314192>'
+  if (onn18 === 0) onn18 = '<:gioff:700517556020314192>'
+  if (onn18 === 1) onn18 = '<:gioff:700517556020314192>'
+  if (onn18 === 2) onn18 = '<:gion:700517483286888490>'
   
   let onnregister = await db.get(`onnregister_${message.guild.id}`)
-  if (onnregister === null) onnregister = '<:dokyoff:700517556020314192>'
-  if (onnregister === 0) onnregister = '<:dokyoff:700517556020314192>'
-  if (onnregister === 1) onnregister = '<:dokyoff:700517556020314192>'
-  if (onnregister === 2) onnregister = '<:dokyon:700517483286888490>'
+  if (onnregister === null) onnregister = '<:gioff:700517556020314192>'
+  if (onnregister === 0) onnregister = '<:gioff:700517556020314192>'
+  if (onnregister === 1) onnregister = '<:gioff:700517556020314192>'
+  if (onnregister === 2) onnregister = '<:gion:700517483286888490>'
   
   let onregister = await db.get(`onregister_${message.guild.id}`)
-  if (onregister === null) onregister = '<:dokyoff:700517556020314192>'
-  if (onregister === 0) onregister = '<:dokyoff:700517556020314192>'
-  if (onregister === 1) onregister = '<:dokyoff:700517556020314192>'
-  if (onregister === 2) onregister = '<:dokyon:700517483286888490>'
+  if (onregister === null) onregister = '<:gioff:700517556020314192>'
+  if (onregister === 0) onregister = '<:gioff:700517556020314192>'
+  if (onregister === 1) onregister = '<:gioff:700517556020314192>'
+  if (onregister === 2) onregister = '<:gion:700517483286888490>'
   
   
   
@@ -92,8 +92,8 @@ exports.run = async (doky, message, args) => { // setando a base
   
   let embed = new Discord.MessageEmbed()
         .setTitle(`**Registro**`)
-        .setColor("#2f3136") //<:dokyon:700517483286888490> 
-        .setDescription('O Sistema neste servidor esta: **'+`${onoff}`+'**\n\n<:doky1:701544373204025454> » `Homem`\n\n<:doky2:701544339167379517> » `Mulher`\n\n<:doky3:701544370305761281> » `Outro`\n\n<:doky4:701544361229287696> » `+18`\n\n<:doky5:701544355755851906> » `-18`\n\n<:doky6:701544349590224937> » `Não registrado`\n\n<:doky7:701544364194922656> » `Registrado`')
+        .setColor("#4287f5") //<:dokyon:700517483286888490> 
+        .setDescription('O Sistema neste servidor esta: **'+`${onoff}`+'**\n\n<:gi1:701544373204025454> » `Homem`\n\n<:gi2:701544339167379517> » `Mulher`\n\n<:gi3:701544370305761281> » `Outro`\n\n<:gi4:701544361229287696> » `+18`\n\n<:gi5:701544355755851906> » `-18`\n\n<:gi6:701544349590224937> » `Não registrado`\n\n<:gi7:701544364194922656> » `Registrado`')
     message.channel.send({embed}).then(msg => { // evento para reagir a mensagem
       
               msg.react('701544373204025454').then(r => {  //<:doky1:701544373204025454> filtro 1
@@ -143,13 +143,14 @@ exports.run = async (doky, message, args) => { // setando a base
           .setTitle("**Homem**")
           .setDescription(`
 **Seja bem vindo ao meu menu de registro**
-Para definir um cargo para **Homem** 
-Utilize **${config.prefix}cargohomem @cargo**
+
+Para definir um cargo para **Homem** utilize **${config.prefix}cargohomem @cargo**
+
 ${onhomem} **|** **Cargo:** <@&${rolehomem}>
 `)
           //.setThumbnail('')
           .setFooter(`Para obter qualquer outra informação ${config.prefix}ajuda`)
-          .setColor("#2f3136")
+          .setColor("#4287f5")
 
             msg.edit(embed);
         })
@@ -159,12 +160,13 @@ ${onhomem} **|** **Cargo:** <@&${rolehomem}>
                 .setTitle("**Mulher**")
                 .setDescription(`
 **Seja bem vindo ao meu menu de registro**
-Para definir um cargo para **mulher** 
-utilize ${config.prefix}cargomulher @cargo
+
+Para definir um cargo para **mulher** utilize **${config.prefix}cargomulher @cargo**
+
 ${onmulher} **| Cargo:** <@&${rolemulher}>
 `)
           .setFooter(`Para obter qualquer outra informação ${config.prefix}ajuda`)
-          .setColor("#2f3136")
+          .setColor("#4287f5")
             msg.edit(embed);
         })
                 threeL.on('collect', r2 => {
@@ -172,12 +174,13 @@ ${onmulher} **| Cargo:** <@&${rolemulher}>
                 .setTitle("**Outro**")
                 .setDescription(`
 **Seja bem vindo ao meu menu de registro**
-Para definir um cargo para **Outro** 
-Utilize **${config.prefix}cargooutro @cargo**
+
+Para definir um cargo para **Outro** utilize **${config.prefix}cargooutro @cargo**
+
 ${onoutro} **| Cargo: <@&${roleoutro}>**
 `)
                 .setFooter(`Para obter qualquer outra informação ${config.prefix}ajuda`)
-                .setColor("#2f3136")
+                .setColor("#4287f5")
 
             msg.edit(embed);
         })
@@ -187,12 +190,13 @@ ${onoutro} **| Cargo: <@&${roleoutro}>**
                 .setTitle("**+18**")
                 .setDescription(`
 **Seja bem vindo ao meu menu de registro**
-Para definir um cargo para **+18** 
-Utilize **${config.prefix}cargomais18 @cargo**
+
+Para definir um cargo para **+18** utilize **${config.prefix}cargomais18 @cargo**
+
 ${onm18} **| Cargo:** <@&${rolem18}>
 `)
                 .setFooter(`Para obter qualquer outra informação ${config.prefix}ajuda`)
-                .setColor("#2f3136")
+                .setColor("#4287f5")
 
             msg.edit(embed);
         })
@@ -202,12 +206,13 @@ ${onm18} **| Cargo:** <@&${rolem18}>
                 .setTitle("**-18**")
                 .setDescription(`
 **Seja bem vindo ao meu menu de registro**
-Para definir um cargo para **-18** 
-Utilize **${config.prefix}cargomenos18 @cargo**
+
+Para definir um cargo para **-18** utilize **${config.prefix}cargomenos18 @cargo**
+
 ${onn18} **| Cargo:** <@&${rolen18}>
 `)
                 .setFooter(`Para obter qualquer outra informação ${config.prefix}ajuda`)
-                .setColor("#2f3136")
+                .setColor("#4287f5")
 
             msg.edit(embed);
         })
@@ -217,12 +222,13 @@ ${onn18} **| Cargo:** <@&${rolen18}>
                 .setTitle("**Não Registrado**")
                 .setDescription(`
 **Seja bem vindo ao meu menu de registro**
-Para definir um cargo para **Não Registrado** 
-Utilize **${config.prefix}cargonaoregistrado @cargo**
+
+Para definir um cargo para **Não Registrado** utilize **${config.prefix}cargonaoregistrado @cargo**
+
 ${onnregister} **| Cargo:** <@&${rolenregister}>
 `)
                 .setFooter(`Para obter qualquer outra informação ${config.prefix}ajuda`)
-                .setColor("#2f3136")
+                .setColor("#4287f5")
 
             msg.edit(embed);
         })
@@ -232,12 +238,13 @@ ${onnregister} **| Cargo:** <@&${rolenregister}>
                 .setTitle("**Registrado**")
                 .setDescription(`
 **Seja bem vindo ao meu menu de registro**
-Para definir um cargo para **Registrado** 
-Utilize **${config.prefix}cargoregistrado @cargo**
+
+Para definir um cargo para **Registrado** utilize **${config.prefix}cargoregistrado @cargo**
+
 ${onregister} **|** **Cargo:** <@&${roleregister}>
 `)
                 .setFooter(`Para obter qualquer outra informação ${config.prefix}ajuda`)
-                .setColor("#2f3136")
+                .setColor("#4287f5")
 
             msg.edit(embed);
         })
@@ -245,8 +252,8 @@ ${onregister} **|** **Cargo:** <@&${roleregister}>
         Back.on('collect', r2 => {
             embed = new Discord.MessageEmbed()
             .setTitle(`**Registro**`)
-            .setColor("#2f3136")
-            .setDescription('O Sistema neste servidor esta: **'+`${onoff}`+'**\n\n <:doky1:701544373204025454> » `Homem`\n\n<:doky2:701544339167379517> » `Mulher`\n\n<:doky3:701544370305761281> » `+18`\n\n<:doky4:701544361229287696>  » `-18`\n\n<:doky5:701544355755851906> » `Não registrado`\n\n<:doky6:701544349590224937> » `Registrado`')
+            .setColor("#4287f5")
+            .setDescription('O Sistema neste servidor esta: **'+`${onoff}`+'**\n\n <:gi1:701544373204025454> » `Homem`\n\n<:gi2:701544339167379517> » `Mulher`\n\n<:gi3:701544370305761281> » `+18`\n\n<:gi4:701544361229287696>  » `-18`\n\n<:gi5:701544355755851906> » `Não registrado`\n\n<:gi6:701544349590224937> » `Registrado`')
             
            msg.edit(embed);  
         });

@@ -3,34 +3,33 @@ const { promptMessage } = require("../../functions.js");
 
 const chooseArr = ["🗻", "📰", "✂"];
 
-exports.run = async (doky, message, args) => {
+exports.run = async (client, message, args) => {
   
         const embed = new Discord.MessageEmbed()
             .setColor("#ffffff")
-            .setFooter(message.guild.me.displayName, doky.user.displayAvatarURL())
+            .setFooter(message.guild.me.displayName, client.user.displayAvatarURL())
             .setDescription("Adicione uma reação para começar a jogar!")
             .setTimestamp();
 
         const r = await message.channel.send(embed);
         const reacted = await promptMessage(r, message.author, 30, chooseArr);
 
-        const dokyChoice = chooseArr[Math.floor(Math.random() * chooseArr.length)];
+        const clientChoice = chooseArr[Math.floor(Math.random() * chooseArr.length)];
 
-        const result = await getResult(reacted, dokyChoice);
+        const result = await getResult(reacted, clientChoice);
         
 
         embed
-        .setDescription("")
-        .addField(result, `${reacted} vs ${dokyChoice}`);
-
+        .addField(result, `${reacted} vs ${clientChoice}`)
+        .setColor('4287f5');
         r.edit(embed);
   
-        function getResult(me, dokyChosen) {
-            if ((me === "🗻" && dokyChosen === "✂") ||
-                (me === "📰" && dokyChosen === "🗻") ||
-                (me === "✂" && dokyChosen === "📰")) {
+        function getResult(me, clientChosen) {
+            if ((me === "🗻" && clientChosen === "✂") ||
+                (me === "📰" && clientChosen === "🗻") ||
+                (me === "✂" && clientChosen === "📰")) {
                     return "Você ganhou!";
-            } else if (me === dokyChosen) {
+            } else if (me === clientChosen) {
                 return "Empate!";
             } else {
                 return "Você perdeu!";

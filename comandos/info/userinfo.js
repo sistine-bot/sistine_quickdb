@@ -8,12 +8,13 @@ const status = {
     dnd: "<:ocupado:695708215127572561> `ocupado`", 
     offline: "<:offilne:695708217174392884> `offline`" 
 };
-exports.run = (doky, message, args) => { // setando a base
 
-    var permissions = []; // deixamos vazio, pois no final do codigo, com toda nossa informacao, vai adicionar sozinho
-    // puxando um membro mencionavel || nos argumentos zero || caso nao mencione ninguem, vai ser ele mesmo
-    const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
-   // um sistema de cores, para definir em randomico
+exports.run = (client, message, args) => { // setando a base
+
+  let permissions = [];
+  
+  const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
+  
    const randomColor = "#000000".replace(/0/g, function () { return (~~(Math.random() * 16)).toString(16); }); 
     
    // agora, uma 'tabela' (sim, denovo kk), com todas as permissoes do Discord
@@ -62,12 +63,12 @@ exports.run = (doky, message, args) => { // setando a base
     //.setColor("#2f3136")
     .setColor(`${message.member.displayHexColor}`)
     .setThumbnail(member.user.displayAvatarURL())
-    .addField("**<:dokyprofile:700516353831993385>•Apelido neste servidor**", `\`${member.nickname !== null ? `${member.nickname}` : 'Nenhum apelido'}\``, true)
-    .addField("**<:dokytag:701202353474371585>•User tag**", `\`${member.user.username}#${member.user.discriminator}\``, true)
-    .addField("**<:dokystatus:701201376679690261>•Status**",`${status[member.user.presence.status]}`, true)
-    .addField('**<:dokyid:701200223422119966>•Id**',`\`${member.id}\``,false)
-    .addField("**<:dokyuserinfo:701202631472709733>•User Status**", `**<:dokyjogando:701203530266181762>•Jogando**\n${member.user.presence.game ? `${member.user.presence.game.name}` : "Nenhum jogo detectado"}\n\n**<:dokypermis:701205888286851132>•Permissões**\n${permissions.join(', ')}\n\n**<:dokyday:700492901196759153>•Conta criada em**\n${moment(member.user.createdAt).format("LLL")}`,true)
-    .addField(`<:dokyroles:701204294816497754>•Cargos ${member.roles.cache.filter(r => r.id !== message.guild.id).map(a => `\`${a.name}\``).length}`,`${member.roles.cache.filter(r => r.id !== message.guild.id).map(roles => `<@&${roles.id }>`).join(', ') || "Esse membro não possui cargos."}`, false)
+    .addField("**<:giprofile:710193333732900945>•Apelido neste servidor**", `\`${member.nickname !== null ? `${member.nickname}` : 'Nenhum apelido'}\``, true)
+    .addField("**<:gitag:710185903024504963>•User tag**", `\`${member.user.username}#${member.user.discriminator}\``, true)
+    .addField("**<:gistatus:710209679095234580>•Status**",`${status[member.user.presence.status]}`, true)
+    .addField('**<:giid:710190138826948668>•Id**',`\`${member.id}\``,false)
+    .addField("**<:giuserinfo:710185421279330304>•User Status**", `**<:gigame:710186288493363280>•Jogando**\n${member.user.presence.game ? `${member.user.presence.game.name}` : "Nenhum jogo detectado"}\n\n**<:gipermis:710186900224344155>•Permissões**\n${permissions.join(', ')}\n\n**<:gicalendario:710208232928575581>•Conta criada em**\n${moment(member.user.createdAt).format("LLL")}`,true)
+    .addField(`<:gicargos:710187865329500232>•Cargos ${member.roles.cache.filter(r => r.id !== message.guild.id).map(a => `\`${a.name}\``).length}`,`${member.roles.cache.filter(r => r.id !== message.guild.id).map(roles => `<@&${roles.id}>`).join(', ') || "Esse membro não possui cargos."}`, false)
     message.channel.send({embed})
 }
 

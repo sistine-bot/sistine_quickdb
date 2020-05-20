@@ -1,16 +1,16 @@
 const Discord = require("discord.js");
 const config = require('../../config.json')
 
-exports.run = async (doky, message, args) => {
+exports.run = async (client, message, args) => {
   let reason = args.slice(0).join(' ');
   
         if (reason.length < 1) {
             return message.channel.send(new Discord.MessageEmbed()
-                .setTitle("**<:dokyerro:700492899833479249> » Uso incorreto do comando**")
-                .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${config.prefix}${this.help.name} nick` + "``")
+                .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} nick` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
-                .addField('**Permissões**', `\`nenhum\``, false)
-                .setColor('2f3136'));
+                .addField('**Permissões**', `\`nenhuma\``, false)
+                .setColor('4287f5'));
         }
   
     let embed = new Discord.MessageEmbed()
@@ -19,7 +19,7 @@ exports.run = async (doky, message, args) => {
         .setImage(`https://mc-heads.net/body/${args[0]}`)
         .setFooter(message.author.tag, message.author.avatarURL())
         .setTimestamp(new Date())
-        .setColor('2f3136')
+        .setColor('4287f5')
     message.channel.send(embed)
 }
 

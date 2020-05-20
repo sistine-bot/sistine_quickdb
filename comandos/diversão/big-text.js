@@ -2,16 +2,16 @@ const Discord = require('discord.js'); // puxando a livraria 'discord.js'
 const num_conv = require('number-to-words'); // puxando o NPM 'number-to-words' (instale utilizando: npm i number-to-words)
 const config = require('../../config.json')
 
-exports.run = async (doky, message, args) => { // setando as bases
+exports.run = async (client, message, args) => { // setando as bases
 
     let output = args.join(' '); // criando um argumento, no caso, o que o membro deseja falar
           if (!output) {
             return message.channel.send(new Discord.MessageEmbed()
-                .setTitle("**<:dokyerro:700492899833479249> » Uso incorreto do comando**")
-                .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${config.prefix}${this.help.name} mensagem` + "``")
+                .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} mensagem` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`nenhum\``, false)
-                .setColor('2f3136'));
+                .setColor('4287f5'));
         }
   
     let bigtext_arr = new Array(); // criaremos uma array
@@ -33,7 +33,7 @@ exports.run = async (doky, message, args) => { // setando as bases
         await message.channel.send(bigtext_arr.join('')); // enviando a mensagem com as letras grandes
         return message.delete() // deletando o pedido do membro (!bigtext <edsd>)
     } catch (e) { // procurando algum erro
-        return message.reply(`<:dokyerro:700492899833479249> » Ocorreu um erro e eu não consegui criar sua mensagem.`) // caso tenha algum erro
+        return message.reply(`<:gierro:710197544751202414> » Ocorreu um erro e eu não consegui criar sua mensagem.`) // caso tenha algum erro
     }
 }
 exports.help = { // setando o nome do arquivo, seguido do prefix

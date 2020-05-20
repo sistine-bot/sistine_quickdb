@@ -1,6 +1,6 @@
 const Discord = require("discord.js"); // puxando a livraria discord.js
 
-exports.run = async (doky, message, args) => { 
+exports.run = async (client, message, args) => { 
   return;
 }
 
@@ -56,8 +56,8 @@ exports.help = {
             'setcolor',
             'setvip',
             'vipset',
-            'setwallpaper',
-            'wallpaperset',
+            'wallpaper',
+            'background',
             'vender',
             'sell',
             'trabalhar',
@@ -68,6 +68,14 @@ exports.help = {
             'resetbio',
             'bioreset',
             'bag',
-            'inventario'
+            'inventario',
+            'sacar',
+            'retirar',
+            'deposit',
+            'dep',
+            'depositar',
+            'roubar',
+            'rob',
+            'auxilio'
            ]
 }

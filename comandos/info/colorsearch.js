@@ -3,25 +3,27 @@ const superagent = require('superagent');
 const sf = require("snekfetch");
 const config = require('../../config.json')
 
-exports.run = async (doky, message, args) => {
+exports.run = async (client, message, args) => {
 
       if (!args[0] || args[0] === 'help') {
             return message.channel.send(new Discord.MessageEmbed()
-                .setTitle("**<:dokyerro:700492899833479249> » Uso incorreto do comando**")
-                .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${config.prefix}${this.help.name} RJ` + "``")
+                .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} ffffff` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`nenhum\``, false)
-                .setColor('2f3136'));
-        }
+                .setColor('4287f5'));
+  }
 
-    var isOk = /^[0-9A-F]{6}$/i.test(args[0])
+    let isOk = /^[0-9A-F]{6}$/i.test(args[0])
    // if (isOk === false) return message.reply("<a:dokyatencao:698672287276073090> | Forneça um código hexadecimal válido sem a `#`")
       if (isOk === false) {
             return message.channel.send(new Discord.MessageEmbed()
-                .setTitle("**<:dokyerro:700492899833479249> » Uso incorreto do comando**")
-                .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${config.prefix}${this.help.name} ffffff`+ "``")
-                .setColor('2f3136'));
-        }
+                .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} ffffff` + "``")
+                .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
+                .addField('**Permissões**', `\`nenhum\``, false)
+                .setColor('4287f5'));
+  }
     
     const { body } = await superagent
     .get(`https://api.alexflipnote.dev/color/` + args[0]);

@@ -1,20 +1,21 @@
 const Discord = require('discord.js');
 const config = require('../../config.json')
-module.exports.run = async (doky, message, args) => {
+module.exports.run = async (client, message, args) => {
 
 if(message.member.hasPermission("ADMINISTRATOR")) {
 
   if (!args[0]){
             return message.channel.send(new Discord.MessageEmbed()
-                .setTitle("**<:dokyerro:700492899833479249> » Uso incorreto do comando**")
-                .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${config.prefix}${this.help.name} nome` + "``")
+                .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} nome` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
-                .addField('**Permissões**', `\`Administrador\``, false)
-                .setColor('2f3136'));
+                .addField('**Permissões**', `\`Banir Membros\``, false)
+                .setColor('4287f5'));
         }
-  message.guild.member(doky.user).setNickname(args.join(" ")).then(user => message.channel.send("<:dokycerto:700492893651075112> » Meu novo apelido neste servidor é " + args.join(" ") + "!")).catch(console.error);
+  
+  message.guild.member(client.user).setNickname(args.join(" ")).then(user => message.channel.send("<:gicerto:710198069068562473> » Meu novo apelido neste servidor é " + args.join(" ") + "!")).catch(console.error);
 } else {
-  return message.reply("<:dokyerro:700492899833479249> » Você precisa da permissão de `ADMINISTRATOR` para utilizar este comando")
+  return message.reply("<:gierro:710197544751202414> » Você precisa da permissão de `ADMINISTRATOR` para utilizar este comando")
   }
 }
 

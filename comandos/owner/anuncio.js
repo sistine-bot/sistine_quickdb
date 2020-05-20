@@ -1,6 +1,6 @@
 const Discord = require("discord.js"); // puxando a livraria 'discord.js'
 
-exports.run = (doky, message, args) => { // setando a base
+exports.run = (client, message, args) => { // setando a base
  // requisitando uma permissao, no caso, 'ADMINISTRADOR'
     if(message.author.id !== '675439542110650399') return message.channel.send(`${message.author}, Você não tem permissão para utilizar este comando, apenas pessoas especiais.`);
              
@@ -19,7 +19,7 @@ exports.run = (doky, message, args) => { // setando a base
                             .setTitle(titulo)
                             .setDescription(mensagem)
                             .setFooter(`Anúncio feito por: ${message.author.username}`, message.author.avatarURL())
-                            .setColor('ffffff')
+                            .setColor('4287f5')
                             .setTimestamp()
 
                             //message.channel.send(`@everyone`,embed)

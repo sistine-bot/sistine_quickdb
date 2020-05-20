@@ -1,29 +1,29 @@
 const Discord = require('discord.js'); // puxando a livraria 'discord.js'
 const config = require('../../config.json')
 
-exports.run = async (doky, message, args) => { // setando as bases
+exports.run = async (client, message, args) => { // setando as bases
 
     if (!message.member.hasPermission('BAN_MEMBERS')){
             return message.channel.send(new Discord.MessageEmbed()
-                .setTitle("**<:dokyerro:700492899833479249> » Uso incorreto do comando**")
-                .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${config.prefix}${this.help.name} @usuario motivo` + "``")
+                .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} @usuario motivo` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`Banir Membros\``, false)
-                .setColor('2f3136'));
+                .setColor('4287f5'));
         }
 
     let member = message.mentions.members.first() // puxando um membro mencionavel
     
         if (!member) {
             return message.channel.send(new Discord.MessageEmbed()
-                .setTitle("**<:dokyerro:700492899833479249> » Uso incorreto do comando**")
-                .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${config.prefix}${this.help.name} @usuario motivo` + "``")
+                .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} @usuario motivo` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`Banir Membros\``, false)
-                .setColor('2f3136'));
+                .setColor('4287f5'));
         }
 
-    if (!member.bannable) return message.reply("<:dokyerro:700492899833479249> » não é possível punir este usuário.") // caso o membro tenha um cargo acima do seu bot, ele não vai banir
+    if (!member.bannable) return message.reply("<:gierro:710197544751202414> » não é possível punir este usuário.") // caso o membro tenha um cargo acima do seu bot, ele não vai banir
     let reason = args.slice(1).join(' ')
     if (!reason) reason = "Nenhuma razão fornecida" // requisitando um motivo desse banimento
     await member.ban(reason) // caso não haja, iremos dar o erro

@@ -2,12 +2,12 @@ const Discord = require("discord.js");
 const arraySort = require("array-sort");
 const t = require("table");
 
-exports.run = async (doky, message, args) => {
+exports.run = async (client, message, args) => {
     try {
         const embed = new Discord.MessageEmbed().setColor('RED')
         if (!message.guild.me.hasPermission("MANAGE_GUILD")) {
             embed.setAuthor("Erro")
-                 .setDescription("<:dokyerro:700492899833479249> » Não tenho acesso aos convites do servidor, verifique minhas permissões!");
+                 .setDescription("<:giping:710207742673158197> » Não tenho acesso aos convites do servidor, verifique minhas permissões!");
             return message.channel.send({
                 embed
             });
@@ -17,7 +17,7 @@ exports.run = async (doky, message, args) => {
               embed
               .setColor('RED')
               .setAuthor("Erro")
-              .setDescription("<:dokyerro:700492899833479249> › Atualmente não existem convites criados neste servidor!");
+              .setDescription("<:giping:710207742673158197> › Atualmente não existem convites criados neste servidor!");
             return message.channel.send({embed});
         }
         invites = invites.array();
@@ -29,8 +29,9 @@ exports.run = async (doky, message, args) => {
         invites.forEach(invite => usedInvites.push([`${invite.inviter.tag} › ${invite.uses}\n`]));
           embed
       
-          .setTitle(`📜 Rank de Convites`)
-          .setDescription(usedInvites);
+      .setTitle(`📜 Rank de Convites`)
+      .setDescription(usedInvites)
+      .setColor('4287f5');
         return message.channel.send({embed});
       
     } catch (err) {

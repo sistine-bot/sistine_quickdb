@@ -2,27 +2,28 @@ const Discord = require('discord.js')
 const db = require('quick.db')
 const { prefix } = require('../../config.json')
 
-exports.run = async (doky, message, args) => {
-  if (!message.member.hasPermission("MANAGE_ROLES")) return message.reply("<:dokyerro:700492899833479249> » Você precisa da permissão de: `Gerenciar Cargos` para utilizar este comando");
+exports.run = async (client, message, args) => {
+  if (!message.member.hasPermission("MANAGE_ROLES")) return message.channel.send("<:gierro:710197544751202414> » Você precisa da permissão de: `Gerenciar Cargos` para utilizar este comando");
   
   if (!args[0]) {
-    return message.channel.send(new Discord.MessageEmbed()
-                .setTitle("**<:dokyerro:700492899833479249> » Uso incorreto do comando**")
-                .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${prefix}${this.help.name} @cargo` + "``")
+            return message.channel.send(new Discord.MessageEmbed()
+                .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${prefix}${this.help.name} @cargo` + "``")
                 .addField('**Alternativas**', `\`Nenhuma Alternativa\``, false)
                 .addField('**Permissões**', `\`Gerenciar Cargos\``, false)
-                .setColor('2f3136'));
-  }
+                .setColor('4287f5'));
+        }
   
   let lrole = message.mentions.roles.first();
   if (!lrole) {
-    return message.channel.send(new Discord.MessageEmbed()
-                .setTitle("**<:dokyerro:700492899833479249> » Uso incorreto do comando**")
-                .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${prefix}${this.help.name} @cargo` + "``")
+            return message.channel.send(new Discord.MessageEmbed()
+                .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${prefix}${this.help.name} @cargo` + "``")
                 .addField('**Alternativas**', `\`Nenhuma Alternativa\``, false)
                 .addField('**Permissões**', `\`Gerenciar Cargos\``, false)
-                .setColor('2f3136'));
-  }
+                .setColor('4287f5'));
+        }
+  
   const embed = new Discord.MessageEmbed()
   .setDescription(`Você tem certeza que deseja colocar o cargo: ${lrole}, como o cargo de outro?`)
   
@@ -38,7 +39,8 @@ exports.run = async (doky, message, args) => {
       .then(collected => {
         const reaction = collected.first();
       //cor rosa
-        if (reaction.emoji.id === '700492893651075112') {//<:dokyerro:700492899833479249> 
+        if (reaction.emoji.id === '700492893651075112') {//<:gicerto:710198069068562473>
+                                                        //<:gierro:710197544751202414>
           
           let lrole = message.mentions.roles.first();
           let role = lrole.id;

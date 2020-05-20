@@ -1,7 +1,7 @@
 const Discord = require('discord.js'); // puxando a livraria 'discord.js'
 const moment = require("moment");
 
-exports.run = (doky, message, args) => { // setando a base
+exports.run = (client, message, args) => { // setando a base
 
     let region = { // para deixar mais bacana o codigo, iremos configurar o nome dos locais
         "brazil": "🇧🇷•Brasil",
@@ -48,15 +48,15 @@ exports.run = (doky, message, args) => { // setando a base
   
     let embed = new Discord.MessageEmbed()
     .setAuthor(`${message.guild.name}`, message.guild.iconURL())
-    .setColor('GOLD')
+    .setColor('4287f5')
     .setThumbnail(sicon)
-    .addField(`**<:dokytag:701202353474371585>•Nome**`, `${message.guild.name}`,true)
-    .addField(`**<:dokypermis:701205888286851132>•Dono**`, `${message.guild.owner}`, true)
-    .addField(`**<:dokyid:701200223422119966>•Id**`, `${message.guild.id}`, true)
-    .addField(`**<:dokyday:700492901196759153>•Criado em**`, `\`${moment(message.guild.createdAt).format('LLL')}\``, true)
-    .addField(`**<:dokyworld:701230843762311189>•Região**`, `\`${region[message.guild.region]}\``, false)
-    .addField(`**<:dokyuserinfo:701202631472709733>•Membros** ${message.guild.memberCount}`, `<:dokyprofile:700517338319028276> » **Humanos:** ${checkMembers(message.guild)}\n<:dokybot:701231829839249493> » **Robôs:** ${checkBots(message.guild)}\n<:online:695708217346621550> » **Disponiveis:** ${online}\n<:ocupado:695708215127572561> » **Ocupados:** ${ocupado}\n<:ausente:695708216318885899> » **Ausentes:** ${ausente}\n<:offilne:695708217174392884> » **Offlines:** ${offline}`,true)
-    .addField(`**<:dokyfolders:700837668749049936>•Canais**`,  `<:dokytext:701234859678629899> » **Texto:** ${message.guild.channels.cache.filter(chan => chan.type === 'text').size}\n<:dokyvoice:701234880620527667> » **Voz:** ${message.guild.channels.cache.filter(chan => chan.type === 'voice').size}`, true)
+    .addField(`**<:gitag:710185903024504963>•Nome**`, `${message.guild.name}`,true)
+    .addField(`**<:gipermis:710186900224344155>•Dono**`, `${message.guild.owner}`, true)
+    .addField(`**<:giid:710190138826948668>•Id**`, `${message.guild.id}`, true)
+    .addField(`**<:gicalendario:710208232928575581>•Criado em**`, `\`${moment(message.guild.createdAt).format('LLL')}\``, true)
+    .addField(`**<:giworld:710182737855643678>•Região**`, `\`${region[message.guild.region]}\``, false)
+    .addField(`**<:giuserinfo:710185421279330304>•Membros** ${message.guild.memberCount}`, `<:giprofile:710193570941763614> » **Humanos:** ${checkMembers(message.guild)}\n<:bot:701231829839249493> » **Robôs:** ${checkBots(message.guild)}\n<:online:695708217346621550> » **Disponiveis:** ${online}\n<:ocupado:695708215127572561> » **Ocupados:** ${ocupado}\n<:ausente:695708216318885899> » **Ausentes:** ${ausente}\n<:offilne:695708217174392884> » **Offlines:** ${offline}`,true)
+    .addField(`**<:gifolders:710194436591714344>•Canais**`,  `<:gitext:710181600595410985> » **Texto:** ${message.guild.channels.cache.filter(chan => chan.type === 'text').size}\n<:dokyvoice:701234880620527667> » **Voz:** ${message.guild.channels.cache.filter(chan => chan.type === 'voice').size}`, true)
     message.channel.send(embed)
 }
 

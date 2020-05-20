@@ -2,12 +2,11 @@ const Discord = require('discord.js');
 const c = require('../../config.json');
 let serversmap = new Map(); // List all the servers that the game is running
 
-module.exports.run = async (doky, message, args) => {
-  
+module.exports.run = async (client, message, args) => {
     if (serversmap.has(message.guild.id)) {
         return message.channel.send(new Discord.MessageEmbed()
-            .setTitle('<:dokyerro:700492899833479249> » Erro')
-            .setDescription('<:dokyatencao:700517263224340601> › Já existe uma instância do jogo rodando neste servidor.')
+            .setTitle('<:gierro:710197544751202414> » Erro')
+            .setDescription('<:giatencao:710196761704267807> › Já existe uma instância do jogo rodando neste servidor.')
             .setColor("#FF0000"));
     }
 
@@ -16,7 +15,7 @@ module.exports.run = async (doky, message, args) => {
         time: 1000 * 60 * 5 // 5 minutes to game timeout
     });
 
-    let bot_collector = new Discord.MessageCollector(message.channel, m => m.author.id === doky.user.id, {
+    let bot_collector = new Discord.MessageCollector(message.channel, m => m.author.id === client.user.id, {
         time: 1000 * 60 * 5 // 5 minutes to game timeout
     });
 

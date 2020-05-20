@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const fs = require('fs');
 const config = require('../../config.json')
 
-exports.run = async (doky, message, args) => {
+exports.run = async (client, message, args) => {
   
     let blacklist = JSON.parse(fs.readFileSync("./blacklist.json", "utf8"));
     let user = args[0];
@@ -14,7 +14,7 @@ exports.run = async (doky, message, args) => {
                 .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${config.prefix}${this.help.name} @usuario @motivo` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`Doky Dono\``, false)
-                .setColor('2f3136'));
+                .setColor('4287f5'));
         }
   
     if (!blacklist[user]) {

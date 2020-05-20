@@ -1,27 +1,27 @@
 const { MessageEmbed } = require("discord.js")
 const Discord = require('discord.js'); // puxando a livraria 'discord.js'
 const config = require('../../config.json')
-exports.run = async (doky, message, args) => {
+exports.run = async (client, message, args) => {
 
-    if(!message.member.hasPermission(["BAN_MEMBERS"])) return message.channel.send("<:dokyerro:700492899833479249> » Você não tem permissão de: `BAN_MEMBERS` para utilizar este comando!")
+    if(!message.member.hasPermission(["BAN_MEMBERS"])) return message.channel.send("<:gierro:710197544751202414> » Você não tem permissão de: `Banir Membros` para utilizar este comando!")
   
   
   if (isNaN(args[0])) {
             return message.channel.send(new Discord.MessageEmbed()
-                .setTitle("**<:dokyerro:700492899833479249> » Uso incorreto do comando**")
-                .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${config.prefix}${this.help.name} @usuario motivo` + "``")
+                .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} @usuario motivo` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`Banir Membros\``, false)
-                .setColor('2f3136'));
+                .setColor('4287f5'));
         }
   
-    let bannedMember = await doky.users.fetch(args[0])
-        if(!bannedMember) return message.channel.send("<:dokyerro:700492899833479249> » Forneça um ID de usuário para desbanir alguém!")
+    let bannedMember = await client.users.fetch(args[0])
+        if(!bannedMember) return message.channel.send("<:gierro:710197544751202414> » Forneça um ID de usuário para desbanir alguém!")
 
     let reason = args.slice(1).join(" ")
         if(!reason) reason = "Nenhuma razão fornecida!"
 
-    if(!message.guild.me.hasPermission(["BAN_MEMBERS"])) return message.channel.send("<:dokyerro:700492899833479249> » Eu não tenho permissões de `BAN_MEMBERS` ative minhas permissões para utilizar este comando!")|
+    if(!message.guild.me.hasPermission(["BAN_MEMBERS"])) return message.channel.send("<:gierro:710197544751202414> » Eu não tenho permissões de `BAN_MEMBERS` ative minhas permissões para utilizar este comando!")|
     message.delete()
     try {
         message.guild.members.unban(bannedMember, reason)

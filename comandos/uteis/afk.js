@@ -2,17 +2,17 @@ const Discord = require("discord.js"); // puxando a livraria discord.js
 const db = require('quick.db'); // puxando a npm quick.db (uma database, que para instalar, basta digitar no seu terminal: npm i quick.db)
 const config = require('../../config.json')
 
-exports.run = async (doky, message, args) => {
+exports.run = async (client, message, args) => {
   
 const setStatus = message.content.split(' ');
 
     if(setStatus[1] === 'on'){
-        doky.user.setAFK(true);
+        client.user.setAFK(true);
         message.channel.send(`${message.author}, Agora você esta no modo AFK`);
     }
 
     else if(setStatus[1] === 'off'){
-        doky.user.setAFK(false);
+        client.user.setAFK(false);
         message.channel.send(`${message.author}, Seja bem vindo de volta :) `);
     }
 

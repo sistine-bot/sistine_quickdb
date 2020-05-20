@@ -1,8 +1,8 @@
 const Discord = require("discord.js"); // puxando a livraria 'discord.js'
 
-exports.run = (doky, message, args) => { // setando a base
+exports.run = (client, message, args) => { // setando a base
  // requisitando uma permissao, no caso, 'ADMINISTRADOR'
-    if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply(`<:dokyerro:700492899833479249> » Você precisa da permissão de: \`ADMINISTRATOR\` para utilizar este comando.`) // caso o autor nao possua, vamos dar o erro
+    if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply(`<:gierro:710197544751202414> » Você precisa da permissão de: \`ADMINISTRATOR\` para utilizar este comando.`) // caso o autor nao possua, vamos dar o erro
              
                message.reply(`digite o título desse anúncio.`).then(msg2 => { // adicionando o then, setaremos um nome para o evento
                  let cj = message.channel.createMessageCollector(x => x.author.id == message.author.id, {max: 1}) // criando um messageCollector
@@ -19,7 +19,7 @@ exports.run = (doky, message, args) => { // setando a base
                             .setTitle(titulo)
                             .setDescription(mensagem)
                             .setFooter(`Anúncio feito por: ${message.author.username}`, message.author.avatarURL())
-                            .setColor('ffffff')
+                            .setColor('4287f5')
                             .setTimestamp()
 
                             //message.channel.send(`@everyone`,embed)

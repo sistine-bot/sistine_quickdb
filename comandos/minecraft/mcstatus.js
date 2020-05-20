@@ -3,17 +3,17 @@ const Discord = require('discord.js')
 
 const fs = require('fs');
 const config = require('../../config.json')
-exports.run = async (doky, message, args) => {
+exports.run = async (client, message, args) => {
 
     const ip = args[0]
     
     if(!ip) {
             return message.channel.send(new Discord.MessageEmbed()
-                .setTitle("**<:dokyerro:700492899833479249> » Uso incorreto do comando**")
-                .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${config.prefix}${this.help.name} ip` + "``")
+                .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} ip` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
-                .addField('**Permissões**', `\`nenhum\``, false)
-                .setColor('2f3136'));
+                .addField('**Permissões**', `\`nenhuma\``, false)
+                .setColor('4287f5'));
         }
 
     superagent.get('https://api.mcsrvstat.us/2/' + ip) ////// <- Coloque o IP do seu servidor 
@@ -40,9 +40,9 @@ exports.run = async (doky, message, args) => {
             .addField(`**Online**`, `${On}`, false)
             .addField(`**Versão**`, `${Versionn}`, false)
             .addField(`**Jogadores Online**`, `${online} / ${maximo}`)
-            .setColor('2f3136')
+            .setColor('4287f5')
             .setTimestamp()     
-            .setFooter(doky.user.username)
+            .setFooter(client.user.username)
             
                   message.channel.send(embed)
                 })

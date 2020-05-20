@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-exports.run = async (doky, message, args) => {
+exports.run = async (client, message, args) => {
 
 try {
 
@@ -17,7 +17,7 @@ message.guild.emojis.cache.forEach(async emoji => {
      if (!notAnimated[0]) notAnimated = ['Nenhum']
 
       let embed = new Discord.MessageEmbed()
-      .setColor("#2f3136")
+      .setColor("#4287f5")
       .setAuthor(`${message.guild.name}`, message.guild.iconURL())
 .setDescription('**Emotes Animados:**\n'
 + animated.join(' ')

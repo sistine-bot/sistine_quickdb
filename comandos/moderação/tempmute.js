@@ -2,20 +2,21 @@ const Discord = require("discord.js");
 const ms = require("ms");
 const config = require('../../config.json')
 
-exports.run = async (doky, message, args) => {
+exports.run = async (client, message, args) => {
   
-  if(!message.member.hasPermission(["ADMINISTRATOR"])) return message.channel.send("<:dokyerro:700492899833479249> » Você precisa da permisão de: `ADMINISTRATOR` para utilizar este comando!")
+  if(!message.member.hasPermission(["MANAGE_ROLES"])) return message.channel.send("<:gierro:710197544751202414> » Você precisa da permisão de: `Gerenciar Cargos` para utilizar este comando!")
   let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
+  
   if(!tomute){
             return message.channel.send(new Discord.MessageEmbed()
-                .setTitle("**<:dokyerro:700492899833479249> » Uso incorreto do comando**")
-                .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${config.prefix}${this.help.name} @usuario 1[h/s/d/m]` + "``")
+                .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} 1[h/s/d/m]` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
-                .addField('**Permissões**', `\`Administrador\``, false)
-                .setColor('2f3136'));
+                .addField('**Permissões**', `\`Gerenciar Canais\``, false)
+                .setColor('4287f5'));
         }
   
-  if(tomute.hasPermission("MANAGE_MESSAGES")) return message.reply("<:dokyerro:700492899833479249> » Não e possivel silenciar usuario com cargos de `MANAGE_MESSAGES`");
+  if(tomute.hasPermission("MANAGE_MESSAGES")) return message.reply("<:gierro:710197544751202414> » Não e possivel silenciar usuario com cargos de `MANAGE_MESSAGES`");
   let muterole = message.guild.roles.cache.find(muterole => muterole.name === "Mutado");
   //start of create role
   if(!muterole) {
@@ -28,7 +29,7 @@ exports.run = async (doky, message, args) => {
 
   //end of create role
   let mutetime = args[1];
-  if(!mutetime) return message.reply("<a:dokyerro:698672337033232385> » Você não especificou um tempo!");
+  if(!mutetime) return message.reply("<:gierro:710197544751202414> » Você não especificou um tempo!");
 
   await(tomute.roles.add(muterole.id));
   message.reply(`<@${tomute.id}> foi silenciado por ${ms(ms(mutetime))}`);
