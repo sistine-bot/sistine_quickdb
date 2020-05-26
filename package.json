@@ -9,24 +9,20 @@
   },
   "dependencies": {
     "discord.js": "^12.2.0",
+    "quick.db": "^7.1.1",
     "express": "^4.17.1",
     "superagent": "^5.2.2",
+    "parse-ms": "^2.0.0",
     "kitsu.js": "^2.0.0",
     "animequote": "^1.1.1",
     "number-to-words": "^1.2.4",
     "mathjs": "^6.6.5",
-    "snekfetch": "^4.0.4",
-    "common-tags": "^1.8.0",
-    "jimp": "^0.12.0",
     "random-puppy": "^1.1.0",
-    "moment": "^2.25.3",
+    "moment": "^2.26.0",
     "weather-js": "^2.0.0",
+    "snekfetch": "^4.0.4",
     "array-sort": "^1.0.0",
-    "table": "^5.4.6",
-    "quick.db": "^7.1.1",
-    "os": "^0.1.1",
-    "cpu-stat": "^2.0.1",
-    "cpu-stats": "^1.0.0"
+    "table": "^5.4.6"
   },
   "engines": {
     "node": "12.x"

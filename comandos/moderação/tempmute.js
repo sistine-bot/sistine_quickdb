@@ -1,8 +1,12 @@
 const Discord = require("discord.js");
 const ms = require("ms");
-const config = require('../../config.json')
+const config = require('../../config.json');
+const db = require('quick.db');
 
 exports.run = async (client, message, args) => {
+  
+  let prefixos = db.get(`prefixos_${message.guild.id}`)
+  if (prefixos === null) prefixos = `${config.prefix}`
   
   if(!message.member.hasPermission(["MANAGE_ROLES"])) return message.channel.send("<:gierro:710197544751202414> » Você precisa da permisão de: `Gerenciar Cargos` para utilizar este comando!")
   let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
@@ -10,7 +14,7 @@ exports.run = async (client, message, args) => {
   if(!tomute){
             return message.channel.send(new Discord.MessageEmbed()
                 .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
-                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} 1[h/s/d/m]` + "``")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${prefixos}${this.help.name} 1[h/s/d/m]` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`Gerenciar Canais\``, false)
                 .setColor('4287f5'));
@@ -21,7 +25,7 @@ exports.run = async (client, message, args) => {
   //start of create role
   if(!muterole) {
     const embed = new Discord.MessageEmbed()
-    .setTitle(`<:dokyerro:700492899833479249> Erro`)
+    .setTitle(`<:gierro:710197544751202414> Erro`)
     .addField('Ocorreu um erro,não encontrei o cargo chamado `Mutado`', `Crie um cargo com o nome de Mutado para que eu possa mutar algum usuario.`)
     
     message.channel.send(embed)

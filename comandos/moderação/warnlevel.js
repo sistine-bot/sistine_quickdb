@@ -5,12 +5,16 @@ const db = require('quick.db')
 const config = require('../../config.json')
 
 exports.run = async (client, message, args) => {
-    let user = message.mentions.users.first();
   
-    if(message.mentions.users.size < 1){
+  let prefixos = db.get(`prefixos_${message.guild.id}`)
+  if (prefixos === null) prefixos = `${config.prefix}`
+  
+  let user = message.mentions.users.first();
+  
+  if(message.mentions.users.size < 1){
             return message.channel.send(new Discord.MessageEmbed()
                 .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
-                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} @usuario`+"``")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${prefixos}${this.help.name} @usuario`+"``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`Kickar Membros\``, false)
                 .setColor('4287f5'));

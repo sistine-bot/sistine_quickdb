@@ -1,8 +1,13 @@
 const Discord = require("discord.js");
 const config = require("../../config.json");
+const db = require('quick.db');
 
 module.exports.run = async (client, message, args) => {
-    if(!message.member.hasPermission(["MANAGE_ROLES"])) return message.channel.send("<:dokyerro:700492899833479249> » Você não tem permissão de: `Gerenciar Cargos` para utilizar este comando!")
+  
+  let prefixos = db.get(`prefixos_${message.guild.id}`)
+  if (prefixos === null) prefixos = `${config.prefix}`
+    
+  if(!message.member.hasPermission(["MANAGE_ROLES"])) return message.channel.send("<:dokyerro:700492899833479249> » Você não tem permissão de: `Gerenciar Cargos` para utilizar este comando!")
   
     if (message.guild.member(message.author).hasPermission('MANAGE_ROLES')) {
         let unmute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
@@ -11,7 +16,7 @@ module.exports.run = async (client, message, args) => {
         if (!unmute) {
             return message.channel.send(new Discord.MessageEmbed()
                 .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
-                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} @usuario` + "``")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${prefixos}${this.help.name} @usuario` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`Gerenciar Cargos\``, false)
                 .setColor('4287f5'));

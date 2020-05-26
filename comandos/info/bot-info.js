@@ -1,10 +1,14 @@
-const Discord = require('discord.js'); // puxando a livraria 'discord.js'
-const moment = require('moment'); // puxando o NPM 'moment' (instale utilizando: npm i moment)
-moment.locale('pt-BR'); // definindo o moment para BR
-const config = require('../../config.json')
+const Discord = require('discord.js');
+const moment = require('moment');
+moment.locale('pt-BR');
+const config = require('../../config.json');
+const db = require('quick.db');
 
 exports.run = (client, message, args) => { // puxando a base
 
+  let prefixos = db.get(`prefixos_${message.guild.id}`)
+  if (prefixos === null) prefixos = `${config.prefix}`
+  
     // sistema para identificar a quanto tempo o bot esta online!
     let dias = 0; 
     let week = 0; 
@@ -55,7 +59,7 @@ exports.run = (client, message, args) => { // puxando a base
     .addField(`<:giping:710207742673158197>•Ping`, `\`${parseInt(client.ws.ping)}\``, true)
     .addField(`<:girelogio:710206714288406538>•Tempo online`, `\`${uptime} \``, true)
     .addField(`<:giserver:710191270647169157>•Servidores`, `\`${client.guilds.cache.size}\``, true)
-    .addField(`<:giprefix:710191685929271417>•Prefixo`, `\`${config.prefix}\``, true)
+    .addField(`<:giprefix:710191685929271417>•Prefixo`, `\`${prefixos}\``, true)
     .addField(`**Informações:**`, `**<:gidata:710188710326567085> Linguagem:** ${js} **com** ${linguagem}\n**<:gifolders:710194436591714344> Livraria:** ${livraria}\n**<:gidatabase:710184940670681158> Database:** ${data}\n**<:gihost:710191013196726289> Host:** ${host}`, false)
     .addField(`**<:givortex:710215343024636006>•Meu criador**`, `${config.vortexname}`, false)
     .addField(`**Links:**`, `<:gisuporte:710192974163607582> ${suport} <:gihost:710191013196726289> ${site}`, false)
@@ -64,7 +68,7 @@ exports.run = (client, message, args) => { // puxando a base
 
 }
 
-exports.help = { // setando o nome do arquivo, seguido do prefix
+exports.help = {
     name: 'botinfo',
   aliases: ["infobot", "gizelleinfo", "infogizelle", "info"]
 }

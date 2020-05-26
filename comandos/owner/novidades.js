@@ -1,4 +1,4 @@
-const Discord = require("discord.js"); // puxando a livraria 'discord.js'
+const Discord = require("discord.js");
 const db = require('quick.db')
 
 exports.run = async (client, message, args) => { // setando a base

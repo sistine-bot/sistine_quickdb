@@ -1,12 +1,16 @@
-const Discord = require('discord.js'); // puxando a livraria 'discord.js'
-const config = require('../../config.json')
+const Discord = require('discord.js');
+const config = require('../../config.json');
+const db = require('quick.db');
 
 exports.run = async (client, message, args) => { // setando as bases
 
-    if (!message.member.hasPermission('BAN_MEMBERS')){
+  let prefixos = db.get(`prefixos_${message.guild.id}`)
+  if (prefixos === null) prefixos = `${config.prefix}`
+  
+  if (!message.member.hasPermission('BAN_MEMBERS')){
             return message.channel.send(new Discord.MessageEmbed()
                 .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
-                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} @usuario motivo` + "``")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${prefixos}${this.help.name} @usuario motivo` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`Banir Membros\``, false)
                 .setColor('4287f5'));
@@ -17,7 +21,7 @@ exports.run = async (client, message, args) => { // setando as bases
         if (!member) {
             return message.channel.send(new Discord.MessageEmbed()
                 .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
-                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} @usuario motivo` + "``")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${prefixos}${this.help.name} @usuario motivo` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`Banir Membros\``, false)
                 .setColor('4287f5'));

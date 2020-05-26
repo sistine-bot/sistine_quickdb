@@ -1,8 +1,8 @@
-const Discord = require("discord.js"); // puxando a livraria 'discord.js'
+const Discord = require("discord.js");
 
-exports.run = (client, message, args) => { // setando a base
+exports.run = (client, message, args) => {
 
-    var random = Math.floor(Math.random() * (5 - 2) + 2); // criando um sistema random, fazendo uma continha basica
+    let random = Math.floor(Math.random() * (5 - 2) + 2);
     if (random === 3){
         message.channel.send(`Rodou a roleta e você **SOBREVIVEU**! :sweat_smile:`)
     }
@@ -11,7 +11,7 @@ exports.run = (client, message, args) => { // setando a base
       }
 }
 
-exports.help = { // setando o nome do arquivo, seguido do prefix
+exports.help = {
     name: 'roleta',
   aliases: ["roletarussa"]
 }

@@ -1,14 +1,18 @@
-const Discord = require('discord.js')
-const config = require('../../config.json')
+const Discord = require('discord.js');
+const config = require('../../config.json');
+const db = require('quick.db');
 
 exports.run = async (client, message, args, level) => { // eslint-disable-line no-unused-vars
 	let time = args[0];
 	let reminder = args.splice(1).join(' ');
   
+  let prefixos = db.get(`prefixos_${message.guild.id}`)
+  if (prefixos === null) prefixos = `${prefixos}`
+  
   if (!time || !reminder) {
             return message.channel.send(new Discord.MessageEmbed()
                 .setTitle("**<:dokyerro:700492899833479249> » Uso incorreto do comando**")
-                .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${config.prefix}${this.help.name} 10[s/m/d/h] mensagem` + "``")
+                .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${prefixos}${this.help.name} 10[s/m/d/h] mensagem` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`nenhum\``, false)
                 .setColor('4287f5'));
@@ -34,10 +38,10 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
 		return message.reply('O tempo deve ser númerico [s/m/h/d]');
 	}
 
-	message.reply(`<:dokycerto:700492893651075112> » Eu vou lembrar você de: \`${reminder}\` daqui \`${time}\``);
+	message.reply(`<:gicerto:710198069068562473> » Eu vou lembrar você de: \`${reminder}\` daqui \`${time}\``);
 
 	setTimeout(function () {
-		message.reply(`<:dokynotify:700515853128695839> » Você me pediu para te lembrar de: \`${reminder}\` `);
+		message.reply(`<:girelogio:710206714288406538>» Você me pediu para te lembrar de: \`${reminder}\` `);
 	}, parseInt(timems));
 
 };

@@ -1,16 +1,20 @@
-const Discord = require('discord.js'); // puxando a livraria 'discord.js'
-const config = require('../../config.json')
+const Discord = require('discord.js');
+const config = require('../../config.json');
+const db = require('quick.db');
 
 exports.run = (client, message, args) => { // setando as bases 
+  if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply(`<:gierro:710197544751202414> » você precisa da permissão de: \`MANAGE_MESSAGES\` para utilizar este comando.`); // caso o autor não possua a permissão 'GERENCIAR_MENSAGENS', vamos avisar para ele
   
-    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply(`<:gierro:710197544751202414> » você precisa da permissão de: \`MANAGE_MESSAGES\` para utilizar este comando.`); // caso o autor não possua a permissão 'GERENCIAR_MENSAGENS', vamos avisar para ele
-    let clean = args.slice(0).join(' '); // puxando uma quantidade de numero, partindo dos argumentos zero
+  let prefixos = db.get(`prefixos_${message.guild.id}`)
+  if (prefixos === null) prefixos = `${config.prefix}`
+  
+  let clean = args.slice(0).join(' '); // puxando uma quantidade de numero, partindo dos argumentos zero
  
 
   if (clean < 2 || clean > 100) {
             return message.channel.send(new Discord.MessageEmbed()
                 .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
-                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} 2 a 100` + "``")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${prefixos}${this.help.name} 2 a 100` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`Gerenciar Mensagens\``, false)
                 .setColor('#4287f5'));

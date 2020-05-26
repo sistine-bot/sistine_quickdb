@@ -56,7 +56,7 @@ exports.run = (client, message, args) => { // setando a base
     .addField(`**<:gicalendario:710208232928575581>•Criado em**`, `\`${moment(message.guild.createdAt).format('LLL')}\``, true)
     .addField(`**<:giworld:710182737855643678>•Região**`, `\`${region[message.guild.region]}\``, false)
     .addField(`**<:giuserinfo:710185421279330304>•Membros** ${message.guild.memberCount}`, `<:giprofile:710193570941763614> » **Humanos:** ${checkMembers(message.guild)}\n<:bot:701231829839249493> » **Robôs:** ${checkBots(message.guild)}\n<:online:695708217346621550> » **Disponiveis:** ${online}\n<:ocupado:695708215127572561> » **Ocupados:** ${ocupado}\n<:ausente:695708216318885899> » **Ausentes:** ${ausente}\n<:offilne:695708217174392884> » **Offlines:** ${offline}`,true)
-    .addField(`**<:gifolders:710194436591714344>•Canais**`,  `<:gitext:710181600595410985> » **Texto:** ${message.guild.channels.cache.filter(chan => chan.type === 'text').size}\n<:dokyvoice:701234880620527667> » **Voz:** ${message.guild.channels.cache.filter(chan => chan.type === 'voice').size}`, true)
+    .addField(`**<:gifolders:710194436591714344>•Canais**`,  `<:gitext:710181600595410985> » **Texto:** ${message.guild.channels.cache.filter(chan => chan.type === 'text').size}\n<:givoice:710181135162015857> » **Voz:** ${message.guild.channels.cache.filter(chan => chan.type === 'voice').size}`, true)
     message.channel.send(embed)
 }
 

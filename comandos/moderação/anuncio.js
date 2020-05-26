@@ -1,7 +1,7 @@
 const Discord = require("discord.js"); // puxando a livraria 'discord.js'
 
-exports.run = (client, message, args) => { // setando a base
- // requisitando uma permissao, no caso, 'ADMINISTRADOR'
+exports.run = (client, message, args) => {
+  
     if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply(`<:gierro:710197544751202414> » Você precisa da permissão de: \`ADMINISTRATOR\` para utilizar este comando.`) // caso o autor nao possua, vamos dar o erro
              
                message.reply(`digite o título desse anúncio.`).then(msg2 => { // adicionando o then, setaremos um nome para o evento

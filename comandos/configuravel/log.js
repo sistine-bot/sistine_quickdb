@@ -3,6 +3,9 @@ const db = require('quick.db'); // puxando a npm quick.db (uma database, que par
 const config = require('../../config.json')
 
 exports.run = async (client, message, args) => {
+  let prefixos = db.get(`prefixos_${message.guild.id}`)
+  if (prefixos === null) prefixos = `${config.prefix}`
+  
   let member = message.mentions.users.first() || message.author; // caso ele n mencione, vai ser pra si mesmo
     
   let envlog = db.get(`envlog_${message.guild.id}`)
@@ -11,19 +14,18 @@ exports.run = async (client, message, args) => {
   
   if (!message.member.hasPermission('ADMINISTRATOR')) return message.reply("<:gierro:710197544751202414> » Você precisa da permisão de: `ADIMINISTRADOR` para utilizar este comando.")
   
-  
-  if (isNaN(args.join(" "))) return message.channel.send('<:gierro:710197544751202414> » Isto não e um id')
-  
-  if (!args[0]){
+  if (args[0] === 'reset') {
+    if (isNaN(args.join(" "))) return message.channel.send('<:gierro:710197544751202414> » Você deve me indicar o id de um canal.')
+    
+    if (!args[1]){
             return message.channel.send(new Discord.MessageEmbed()
                 .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
-                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} [id do canal]` + "``")
-                .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${prefixos}${this.help.name} reset` + "``")
+                .addField('**Alternativas**', `\`Nenhuma Alternativa\``, false)
                 .addField('**Permissões**', `\`Adiministrador\``, false)
                 .setColor('#4287f5'));
         }
-  
-  if (args[0] === 'reset') {
+    
     const embedreset = new Discord.MessageEmbed()
     .setDescription(`Você deseja desativar o Canal de logs neste servidor?, Não será mais enviado as mensagens de quando um usuario apagar uma mensagem ou editar.`)
     .setColor('4287f5')
@@ -56,16 +58,23 @@ exports.run = async (client, message, args) => {
       
       })
     })
-  }
+  } else if (args[0] === 'channel') {
   
-    // puxando o membro que iremos enviar
-    let text = args.slice(0).join(' ')
+    if (isNaN(args.join(" "))) return message.channel.send('<:gierro:710197544751202414> » Você deve me indicar o id de um canal.')
     
-    console.log(`canal de logs foi setado com sucesso: <#${text}> no servidor: ${message.guild.name} id: ${message.guild.id}`)
-    client.channels.cache.get('705126526194024510').send(`canal de logs foi setado com sucesso: <#${text}> no servidor: ${message.guild.name} id: ${message.guild.id}`)
-  
+    // puxando o membro que iremos enviar
+    let text = args.slice(1).join(' ')
+    if (!text){
+            return message.channel.send(new Discord.MessageEmbed()
+                .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${prefixos}${this.help.name} [id do canal]` + "``")
+                .addField('**Alternativas**', `\`Nenhuma Alternativa\``, false)
+                .addField('**Permissões**', `\`Adiministrador\``, false)
+                .setColor('#4287f5'));
+        }
+    
   const embed = new Discord.MessageEmbed()
-  .setDescription(`Você deseja colocar o canal\n\n <#${args[0]}>\n\nComo o canal onde será enviada as mensagens apagadas ou editadas?`)
+  .setDescription(`Você deseja colocar o canal\n\n <#${args[1]}>\n\nComo o canal onde será enviada as mensagens apagadas ou editadas?`)
   .setColor('#4287f5');
   message.channel.send(embed).then(msg => {
       
@@ -83,21 +92,27 @@ exports.run = async (client, message, args) => {
       //
       if (reaction.emoji.id === '710198069068562473') {
           msg.delete()
-          message.channel.send('<:gicerto:710198069068562473> » canal de logs foi setado com sucesso em:\n'+`<#${args[0]}>`); 
-          db.set(`envlog_${message.guild.id}`, args.slice(0).join(' '))
+          message.channel.send('<:gicerto:710198069068562473> » canal de logs foi setado com sucesso em:\n'+`<#${args[1]}>`); 
+          db.set(`envlog_${message.guild.id}`, args[1])
+        
+        console.log(`canal de logs foi setado com sucesso: <#${text}> no servidor: ${message.guild.name} id: ${message.guild.id}`)
+        client.channels.cache.get('705126526194024510').send(`canal de logs foi setado com sucesso: <#${text}> no servidor: ${message.guild.name} id: ${message.guild.id}`)
         }
       
         if (reaction.emoji.id === '710197544751202414') {
+          
           msg.delete()
           message.channel.send('<:gierro:710197544751202414> » Comando cancelado com sucesso'); 
-        
         }
       
       })
     })
+    
+  }
+  
 }
 
 exports.help = {
-    name: 'logchannel',
-  aliases: ["channellog"]
+    name: 'log',
+  aliases: []
 }

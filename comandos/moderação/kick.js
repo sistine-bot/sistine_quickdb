@@ -1,16 +1,20 @@
 const Discord = require('discord.js'); // puxando a livraria 'discord.js'
-const config = require('../../config.json')
+const config = require('../../config.json');
+const db = require('quick.db');
 
 exports.run = async (client, message, args) => { // setando as bases
   
-    if (!message.member.hasPermission('KICK_MEMBERS')) return message.reply("<:dokyerro:700492899833479249> » Você precisa da permissão de: `KICK_MEMBERS` para utilizar este comando") // caso o membro não possua a permissão 'EXPULSAR_MEMBROS', vamos botar o erro
+  let prefixos = db.get(`prefixos_${message.guild.id}`)
+  if (prefixos === null) prefixos = `${config.prefix}`
+  
+  if (!message.member.hasPermission('KICK_MEMBERS')) return message.reply("<:dokyerro:700492899833479249> » Você precisa da permissão de: `KICK_MEMBERS` para utilizar este comando") // caso o membro não possua a permissão 'EXPULSAR_MEMBROS', vamos botar o erro
 
-    let member = message.mentions.members.first() // puxando um membro mencionavel
+  let member = message.mentions.members.first() // puxando um membro mencionavel
 
-    if (!member) {
+  if (!member) {
             return message.channel.send(new Discord.MessageEmbed()
                 .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
-                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} @usuario @motivo` + "``")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${prefixos}${this.help.name} @usuario @motivo` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`Gerenciar Mensagens\``, false)
                 .setColor('#4287f5'));
@@ -35,7 +39,7 @@ exports.run = async (client, message, args) => { // setando as bases
           
 }
 
-exports.help = { // setando o nome do arquivo, seguido do prefix
+exports.help = {
     name: 'kick',
   aliases: ["kickar"]
 }

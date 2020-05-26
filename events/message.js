@@ -1,23 +1,26 @@
 const config = require("../config.json");
 const Discord = require("discord.js");
+const db = require('quick.db');
 
 module.exports = async (client, message) => {
+  let prefixos = db.get(`prefixos_${message.guild.id}`)
+  if (prefixos === null) prefixos = `${config.prefix}`
+  
   let mention = [`<@${client.user.id}>`, `<@!${client.user.id}>`];
   mention.find(mention => {
     if (message.content === mention) {
       const embed = new Discord.MessageEmbed()
-        .setDescription(
-          "Oi eu sou a " +
-            `${client.user.username} tenho 16 anos meu prefixo é ${config.prefix} se você quiser saber mais sobre mim utilize: ${config.prefix}botinfo ou ${config.prefix}about`
+        .setDescription(`Oi ${message.author} eu sou a \`${client.user.username}\` tenho 16 anos meu prefixo neste servidor é \`${prefixos}\` se você estiver com qualquer duvida utilize: ${prefixos}ajuda.`
         )
         .setColor(`#4287f5`);
       message.channel.send(embed);
     }
   });
-
+  
   if (message.author.bot) return; // puxando o nome definido, bloquearemos o uso de comandos por outros bots
   if (message.channel.type === "dm") return;
-  let prefix = config.prefix; // puxando o prefixo do nosso bot
+  
+  let prefix = `${prefixos}`; // puxando o prefixo do nosso bot
 
   if (!message.content.startsWith(prefix)) return; // para evitar bugs, setaremos uma function, definindo que o bot respondera apenas para mensagens que possuem seu prefixo, no inicio
   let args = message.content.substring(prefix.length).split(" "); // definindo o que seria os argumentos

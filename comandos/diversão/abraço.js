@@ -1,16 +1,19 @@
 const Discord = require('discord.js'); //exporta a npm discord.js
 const superagent = require("superagent"); //exporta a npm superagent
 const config = require('../../config.json')
+const db = require('quick.db')
 
 //exporta o comando para o index
-exports.run = async (client, message, args) => {
+exports.run = async (client, message, args) => {  
+  let prefixos = db.get(`prefixos_${message.guild.id}`)
+  if (prefixos === null) prefixos = `${config.prefix}`
   
     let member = message.guild.members.cache.get(args[0]) || message.mentions.members.first();
     //Se não mencionar um usuario ele ira responder isto
     if (!member) {
             return message.channel.send(new Discord.MessageEmbed()
                 .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
-                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} @usuario` + "``")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${prefixos}${this.help.name} @usuario` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`nenhuma\``, false)
                 .setColor('4287f5'));

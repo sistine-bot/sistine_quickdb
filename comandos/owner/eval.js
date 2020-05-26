@@ -13,10 +13,13 @@ exports.run = (client, message, args) => {
   
     if (message.author.id !== '675439542110650399') return message.channel.send('<:gierro:710197544751202414> » Você não pode utilizar este comando, Apenas pessoas especiais.');
     
+  let prefixos = db.get(`prefixos_${message.guild.id}`)
+  if (prefixos === null) prefixos = `${config.prefix}`
+  
     if(!args[0]) {
             return message.channel.send(new Discord.MessageEmbed()
                 .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
-                .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${config.prefix}${this.help.name} script` + "``")
+                .setDescription("<:dokypin1:700516924404269056> › Tente usar ``" + `${prefixos}${this.help.name} script` + "``")
                 .addField('**Alternativas**', `\`nenhum\``, false)
                 .addField('**Permissões**', `\`nenhum\``, false)
                 .setColor('4287f5'));

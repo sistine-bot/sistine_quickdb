@@ -3,7 +3,6 @@ const moment = require('moment'); // puxando o NPM 'moment' (instale utilizando:
 moment.locale('pt-BR') // definindo o moment para BR
 
 exports.run = (client, message, args) => { // puxando a base
-
     // sistema para identificar a quanto tempo o bot esta online!
     let dias = 0; 
     let week = 0; 

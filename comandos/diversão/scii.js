@@ -1,14 +1,17 @@
-const Discord = require('discord.js'); // puxando a livraria 'discord.js'
-const fetch = require("node-fetch"); // puxando o NPM 'node-fetch' (instale utilizando: npm i node-fetch)
-const config = require('../../config.json')
+const Discord = require('discord.js');
+const fetch = require("node-fetch");
+const config = require('../../config.json');
+const db = require('quick.db');
 
 exports.run = async (client, message, args) => { // setando a base, mas com a function async
-    let text = encodeURIComponent(args.join(' ')); // puxando os argumentos
+  let prefixos = db.get(`prefixos_${message.guild.id}`)
+  if (prefixos === null) prefixos = `${config.prefix}`
   
+  let text = encodeURIComponent(args.join(' ')); // puxando os argumentos
         if (!text) {
             return message.channel.send(new Discord.MessageEmbed()
                 .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
-                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} mensagem` + "``")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${prefixos}${this.help.name} mensagem` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`nenhum\``, false)
                 .setColor('4287f5'));
@@ -31,7 +34,7 @@ exports.run = async (client, message, args) => { // setando a base, mas com a fu
         });
 }
 
-exports.help = { // setando o nome do arquivo, seguido do prefix
+exports.help = {
     name: 'ascii',
   aliases: []
 }

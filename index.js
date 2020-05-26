@@ -4,9 +4,18 @@ const fs = require("fs");
 const { Collection } = require("discord.js");
 
 const client = new Discord.Client();
-
 client.commands = new Discord.Collection();
 client.aliases = new Collection();
+
+fs.readdir("./events/", (err, files) => {
+  if (err) return console.error(err);
+  files.forEach(file => {
+    const event = require(`./events/${file}`);
+    let eventName = file.split(".")[0];
+    client.on(eventName, event.bind(null, client));
+  });
+});
+
 
 fs.readdir("./comandos/", (err, files) => {
   if (err) console.error(err);
@@ -27,7 +36,21 @@ fs.readdir("./comandos/diversão/", (err, files) => {
   let arquivojs = files.filter(f => f.split(".").pop() == "js");
   arquivojs.forEach((f, i) => {
     let props = require(`./comandos/diversão/${f}`);
-    console.log(`[ ${f} ] - Comandos iniciado ✅`);
+    console.log(`[ DIVERSÃO ] - [ ${f} ] - Comandos iniciado ✅`);
+    client.commands.set(props.help.name, props);
+    props.help.aliases.forEach(alias => {
+      client.aliases.set(alias, props.help.name);
+    });
+  });
+});
+
+fs.readdir("./comandos/economy/", (err, files) => {
+  if (err) console.error(err);
+
+  let arquivojs = files.filter(f => f.split(".").pop() == "js");
+  arquivojs.forEach((f, i) => {
+    let props = require(`./comandos/economy/${f}`);
+    console.log(` [ ECONOMIA ]  - [ ${f} ] - Comandos iniciado ✅`);
     client.commands.set(props.help.name, props);
     props.help.aliases.forEach(alias => {
       client.aliases.set(alias, props.help.name);
@@ -142,17 +165,6 @@ fs.readdir("./comandos/uteis/", (err, files) => {
   });
 });
 
-
-fs.readdir("./events/", (err, files) => {
-  if (err) return console.error(err);
-  files.forEach(file => {
-    const event = require(`./events/${file}`);
-    let eventName = file.split(".")[0];
-    client.on(eventName, event.bind(null, client));
-  });
-});
-
-//codigo pra deixar o o bot sempre online
 const http = require("http");
 const express = require("express");
 const app = express();
@@ -163,6 +175,6 @@ app.get("/", (request, response) => {
 app.listen(process.env.PORT);
 setInterval(() => {
   http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
-}, 280000); // Código que deixa o Bot Online
+}, 280000);
 
-client.login(config.token);
+client.login(process.env.TOKEN);

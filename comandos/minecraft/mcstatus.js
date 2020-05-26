@@ -1,16 +1,19 @@
 const superagent = require("snekfetch");
-const Discord = require('discord.js')
-
+const Discord = require('discord.js');
 const fs = require('fs');
-const config = require('../../config.json')
-exports.run = async (client, message, args) => {
+const config = require('../../config.json');
+const db = require('quick.db');
 
-    const ip = args[0]
+exports.run = async (client, message, args) => {
+  let prefixos = db.get(`prefixos_${message.guild.id}`)
+  if (prefixos === null) prefixos = `${config.prefix}`
+  
+  const ip = args[0]
     
     if(!ip) {
             return message.channel.send(new Discord.MessageEmbed()
                 .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
-                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} ip` + "``")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${prefixos}${this.help.name} ip` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`nenhuma\``, false)
                 .setColor('4287f5'));

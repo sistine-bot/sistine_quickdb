@@ -1,24 +1,29 @@
 const Discord = require('discord.js')
 const db = require('quick.db')
-const { prefix } = require('../../config.json')
+const config = require('../../config.json')
 
 exports.run = async (client, message, args) => {
+  let prefixos = db.get(`prefixos_${message.guild.id}`)
+  if (prefixos === null) prefixos = `${config.prefix}`
+  
   if (!message.member.hasPermission("MANAGE_ROLES")) return message.reply("<:gierro:710197544751202414> » Você precisa da permissão de: `Gerenciar Cargos` para utilizar este comando");
-  let member = message.mentions.users.first() || message.author;
+  let member = message.mentions.users.first();
   
   if (!member) {
             return message.channel.send(new Discord.MessageEmbed()
-                .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
-                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${prefix}${this.help.name} @usuario` + "``")
-                .addField('**Alternativas**', `\`Nenhuma Alternativa\``, false)
-                .addField('**Permissões**', `\`Gerenciar Cargos\``, false)
-                .setColor('4287f5'));
+                .setTitle("<:gierro:710197544751202414> » Você deve mencionar um usuario valido para registrar!")
+                                        .setColor('4287f5'));
         }
+  if (message.mentions.users.first().id === message.author.id) {
+    return message.channel.send(new Discord.MessageEmbed()
+                               .setDescription(`<:gierro:710197544751202414> » Você não pode se registrar`)
+                               .setColor('4287f5'));
+  }
   
   if (!args[0]) {
             return message.channel.send(new Discord.MessageEmbed()
                 .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
-                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${prefix}${this.help.name} @usuario` + "``")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${prefixos}${this.help.name} @usuario` + "``")
                 .addField('**Alternativas**', `\`Nenhuma Alternativa\``, false)
                 .addField('**Permissões**', `\`Gerenciar Cargos\``, false)
                 .setColor('4287f5'));
@@ -63,8 +68,7 @@ exports.run = async (client, message, args) => {
           let lrole = message.mentions.roles.first();
           let role = lrole.id;
           
-         msg.delete()
-          message.channel.send('<:gicerto:710198069068562473> » Comando cancelado com sucesso');
+          msg.edit('<:gicerto:710198069068562473> » Comando cancelado com sucesso');
         }
     })
   })

@@ -23,9 +23,9 @@ exports.run = async (client, message, args) => {
                 .setColor('#2f3136')
                 .setAuthor(`${anime.titles.english ? anime.titles.english : search}`, anime.posterImage.original)
                 //.setDescription(anime.synopsis.replace(/<[^>]*>/g, '').split('\n')[0])
-            .addField('**<:dokybook:707103119665791078> » Status**', `Numero de episodes: **${anime.episodeCount ? anime.episodeCount : 'N/A'}**\nData de inicio: **${anime.startDate}**\nData do termino: **${anime.endDate ? anime.endDate : "Still airing"}**`, false)
-            .addField('**<:dokbooks:707103120488136745> » Estatísticas**', `Média: **${anime.averageRating}**\nClassificação popular: **${anime.ratingRank}**\nRank Popular: **${anime.popularityRank}**`, false)    
-            .addField('**<:dokypin:700516867063939132> » Informações**', `Nome em Japonês: **${anime.titles.romaji}**\nFaixa Etária: **${anime.ageRating}**\nPorn/Gore: **${anime.nsfw ? 'Sim' : 'Não'}**`, false)
+            .addField('**<:gibook:710212976833200149> » Status**', `Numero de episodes: **${anime.episodeCount ? anime.episodeCount : 'N/A'}**\nData de inicio: **${anime.startDate}**\nData do termino: **${anime.endDate ? anime.endDate : "Still airing"}**`, false)
+            .addField('**<:gibooks:710212800529825908> » Estatísticas**', `Média: **${anime.averageRating}**\nClassificação popular: **${anime.ratingRank}**\nRank Popular: **${anime.popularityRank}**`, false)    
+            .addField('**<:gipin:710194953028108338> » Informações**', `Nome em Japonês: **${anime.titles.romaji}**\nFaixa Etária: **${anime.ageRating}**\nPorn/Gore: **${anime.nsfw ? 'Sim' : 'Não'}**`, false)
             .setThumbnail(anime.posterImage.original, 200, 300);
           
 

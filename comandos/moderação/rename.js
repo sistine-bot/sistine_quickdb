@@ -1,13 +1,18 @@
 const Discord = require('discord.js');
-const config = require('../../config.json')
+const config = require('../../config.json');
+const db = require('quick.db');
+
 module.exports.run = async (client, message, args) => {
 
+  let prefixos = db.get(`prefixos_${message.guild.id}`)
+  if (prefixos === null) prefixos = `${config.prefix}`
+  
 if(message.member.hasPermission("ADMINISTRATOR")) {
 
   if (!args[0]){
             return message.channel.send(new Discord.MessageEmbed()
                 .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
-                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} nome` + "``")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${prefixos}${this.help.name} nome` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`Banir Membros\``, false)
                 .setColor('4287f5'));

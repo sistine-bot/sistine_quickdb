@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => { // setando as bases
   message.channel.send(catembed);
 }
 
-exports.help = { // setando o nome do arquivo, seguido do prefix
+exports.help = {
     name: "sadcat",
   aliases: ["gatinho"]
  }

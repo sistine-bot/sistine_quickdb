@@ -2,7 +2,10 @@ const Discord = require('discord.js');
 const db = require('quick.db');
 const config = require('../../config.json')
 
-exports.run = async (client, message, args) => { // setando a base
+exports.run = async (client, message, args) => {
+  let prefixos = db.get(`prefixos_${message.guild.id}`)
+  if (prefixos === null) prefixos = `${config.prefix}`
+  
   let member = message.mentions.users.first() || message.author; // caso ele n mencione, vai ser pra si mesmo
   if (message.author.id !== '675439542110650399') return message.channel.send('<:gierro:710197544751202414> » Você não pode utilizar este comando, Apenas pessoas especiais.');
   //on/off
@@ -144,12 +147,12 @@ exports.run = async (client, message, args) => { // setando a base
           .setDescription(`
 **Seja bem vindo ao meu menu de registro**
 
-Para definir um cargo para **Homem** utilize **${config.prefix}cargohomem @cargo**
+Para definir um cargo para **Homem** utilize **${prefixos}cargohomem @cargo**
 
 ${onhomem} **|** **Cargo:** <@&${rolehomem}>
 `)
           //.setThumbnail('')
-          .setFooter(`Para obter qualquer outra informação ${config.prefix}ajuda`)
+          .setFooter(`Para obter qualquer outra informação ${prefixos}ajuda`)
           .setColor("#4287f5")
 
             msg.edit(embed);
@@ -161,11 +164,11 @@ ${onhomem} **|** **Cargo:** <@&${rolehomem}>
                 .setDescription(`
 **Seja bem vindo ao meu menu de registro**
 
-Para definir um cargo para **mulher** utilize **${config.prefix}cargomulher @cargo**
+Para definir um cargo para **mulher** utilize **${prefixos}cargomulher @cargo**
 
 ${onmulher} **| Cargo:** <@&${rolemulher}>
 `)
-          .setFooter(`Para obter qualquer outra informação ${config.prefix}ajuda`)
+          .setFooter(`Para obter qualquer outra informação ${prefixos}ajuda`)
           .setColor("#4287f5")
             msg.edit(embed);
         })
@@ -175,11 +178,11 @@ ${onmulher} **| Cargo:** <@&${rolemulher}>
                 .setDescription(`
 **Seja bem vindo ao meu menu de registro**
 
-Para definir um cargo para **Outro** utilize **${config.prefix}cargooutro @cargo**
+Para definir um cargo para **Outro** utilize **${prefixos}cargooutro @cargo**
 
 ${onoutro} **| Cargo: <@&${roleoutro}>**
 `)
-                .setFooter(`Para obter qualquer outra informação ${config.prefix}ajuda`)
+                .setFooter(`Para obter qualquer outra informação ${prefixos}ajuda`)
                 .setColor("#4287f5")
 
             msg.edit(embed);
@@ -191,11 +194,11 @@ ${onoutro} **| Cargo: <@&${roleoutro}>**
                 .setDescription(`
 **Seja bem vindo ao meu menu de registro**
 
-Para definir um cargo para **+18** utilize **${config.prefix}cargomais18 @cargo**
+Para definir um cargo para **+18** utilize **${prefixos}cargomais18 @cargo**
 
 ${onm18} **| Cargo:** <@&${rolem18}>
 `)
-                .setFooter(`Para obter qualquer outra informação ${config.prefix}ajuda`)
+                .setFooter(`Para obter qualquer outra informação ${prefixos}ajuda`)
                 .setColor("#4287f5")
 
             msg.edit(embed);
@@ -207,11 +210,11 @@ ${onm18} **| Cargo:** <@&${rolem18}>
                 .setDescription(`
 **Seja bem vindo ao meu menu de registro**
 
-Para definir um cargo para **-18** utilize **${config.prefix}cargomenos18 @cargo**
+Para definir um cargo para **-18** utilize **${prefixos}cargomenos18 @cargo**
 
 ${onn18} **| Cargo:** <@&${rolen18}>
 `)
-                .setFooter(`Para obter qualquer outra informação ${config.prefix}ajuda`)
+                .setFooter(`Para obter qualquer outra informação ${prefixos}ajuda`)
                 .setColor("#4287f5")
 
             msg.edit(embed);
@@ -223,11 +226,11 @@ ${onn18} **| Cargo:** <@&${rolen18}>
                 .setDescription(`
 **Seja bem vindo ao meu menu de registro**
 
-Para definir um cargo para **Não Registrado** utilize **${config.prefix}cargonaoregistrado @cargo**
+Para definir um cargo para **Não Registrado** utilize **${prefixos}cargonaoregistrado @cargo**
 
 ${onnregister} **| Cargo:** <@&${rolenregister}>
 `)
-                .setFooter(`Para obter qualquer outra informação ${config.prefix}ajuda`)
+                .setFooter(`Para obter qualquer outra informação ${prefixos}ajuda`)
                 .setColor("#4287f5")
 
             msg.edit(embed);
@@ -239,11 +242,11 @@ ${onnregister} **| Cargo:** <@&${rolenregister}>
                 .setDescription(`
 **Seja bem vindo ao meu menu de registro**
 
-Para definir um cargo para **Registrado** utilize **${config.prefix}cargoregistrado @cargo**
+Para definir um cargo para **Registrado** utilize **${prefixos}cargoregistrado @cargo**
 
 ${onregister} **|** **Cargo:** <@&${roleregister}>
 `)
-                .setFooter(`Para obter qualquer outra informação ${config.prefix}ajuda`)
+                .setFooter(`Para obter qualquer outra informação ${prefixos}ajuda`)
                 .setColor("#4287f5")
 
             msg.edit(embed);

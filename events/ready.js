@@ -1,11 +1,4 @@
-const db = require('quick.db')
-
 module.exports = (client, message) => { //doky.on('ready', () => {
-  
-  let msgstatus = db.get(`msgsts_${client.id}`)
-  
-  let gamestats = db.get(`gamests_${client.id}`)
-  
   const config = require('../config.json')
     let tabela = [
         {name: `${client.users.cache.size} fofos`, type: "WATCHING"},
@@ -21,7 +14,5 @@ module.exports = (client, message) => { //doky.on('ready', () => {
       }, 20000)
   
   console.log(`[ ${client.user.username} foi inicializada sem Problemas. ]\n-=-=-=-=-=-= INFORMAÇÔES -=-=-=-=-=-=\n[Usúarios]: ${client.users.cache.size}\n[Servidores]: ${client.guilds.cache.size}\n[Canais em Geral]: ${client.channels.cache.size}\n-=-=-=-=-=-= INFORMAÇÔES -=-=-=-=-=-=`); 
-  
-  console.log(`A rainha ${client.user.username} Foi iniciada com sucesso`);
 }
 //});

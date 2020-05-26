@@ -3,6 +3,9 @@ const db = require('quick.db'); // puxando a npm quick.db (uma database, que par
 const config = require('../../config.json')
 
 exports.run = async (client, message, args) => {
+  let prefixos = db.get(`prefixos_${message.guild.id}`)
+  if (prefixos === null) prefixos = `${config.prefix}`
+  
   let member = message.mentions.users.first() || message.author; // caso ele n mencione, vai ser pra si mesmo
     
   let prunchannel = await db.get(`prunchannel_${message.author.id}`) // puxando a quantia de 'money' (nome que definimos) que possui registrado na db
@@ -17,7 +20,7 @@ exports.run = async (client, message, args) => {
   if (!args[0]){
             return message.channel.send(new Discord.MessageEmbed()
                 .setTitle("**<:gierro:710197544751202414> » Uso incorreto do comando**")
-                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${config.prefix}${this.help.name} [id do canal]` + "``")
+                .setDescription("<:gipin:710194953028108338> › Tente usar ``" + `${prefixos}${this.help.name} [id do canal]` + "``")
                 .addField('**Alternativas**', `\`${this.help.aliases}\``, false)
                 .addField('**Permissões**', `\`Adiministrador\``, false)
                 .setColor('#4287f5'));

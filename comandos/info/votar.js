@@ -10,7 +10,7 @@ exports.run = (client, message, args) => { // setando a base
     //.setColor("#2f3136")
     .setColor(`4287f5`)
     .setThumbnail(client.user.displayAvatarURL())
-    .setDescription(`**Vote em mim [aqui](https://top.gg/bot/698287896997789746/vote) pra ser um bot reconhecido.**`)
+    .setDescription(`**Vote em mim [aqui](https://top.gg/bot/698287896997789746/vote) para eu ser uma BOT reconhecida.**`)
     message.channel.send({embed})
 }
 

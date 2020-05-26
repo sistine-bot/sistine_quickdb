@@ -2,8 +2,12 @@ const Discord = require('discord.js'); // puxando a livraria 'discord.js'
 const math = require('mathjs'); // puxando o NPM 'mathjs' (instale utilizando: npm i mathjs)
 const ms = require('ms'); // puxando o NPM 'ms' (instale utilizando: npm i ms)
 const config = require('../../config.json')
+const db = require('quick.db');
 
 exports.run = async (client, message, args) => { // setando a base, com async
+  
+  let prefixos = db.get(`prefixos_${message.guild.id}`)
+  if (prefixos === null) prefixos = `${config.prefix}`
   
     if (!args[0]) {
             return message.channel.send(new Discord.MessageEmbed()

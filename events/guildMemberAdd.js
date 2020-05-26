@@ -45,5 +45,6 @@ module.exports = async (client, message) =>{
     client.channels.cache.get('705126526194024510').send(logembed)
   
     console.log(`Usuario: ${member}#${message.user.discriminator} entrou no servidor: ${message.guild.name} id: ${message.guild.id}`)
-    canal.send(`${member}#${message.user.discriminator}`, embed)
+    //canal.send(`${member}#${message.user.discriminator}`, embed)
+  canal.send(`<@${message.user.id}>`, embed)
 }
