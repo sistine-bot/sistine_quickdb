@@ -132,4 +132,4 @@
 
 - #### Abaixo estão todas os meus comandos, Mas caso preferir veja em meu site: [doky.website](https://doky.glitch/comandos)
 
-`© Doky 2020 Todos os direitos reservados`
+`© Sistine 2020 Todos os direitos reservados`
